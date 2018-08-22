@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".activities.InitialSetupActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/initialSetupToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        app:contentInsetStart="0dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/initialSetupPageHeadingTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/initial_setup"
+                android:textAlignment="center"
+                android:textColor="#CC000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/initialSetupScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/initialSetupDoneButton"
+        android:layout_below="@id/initialSetupToolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Personal Information"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/initialSetupTextInputLayoutName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp">
+
+                <EditText
+                    android:id="@+id/initialSetupNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:inputType="textCapWords|textNoSuggestions"
+                    android:lines="1"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Profile 1"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/initialSetupTextInputLayoutUserName1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp">
+
+                <EditText
+                    android:id="@+id/initialSetupUserName1EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:inputType="text|textVisiblePassword"
+                    android:lines="1"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/initialSetupTextInputLayoutPassword1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp">
+
+                <EditText
+                    android:id="@+id/initialSetupPassword1EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="numberPassword"
+                    android:lines="1"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Profile 2"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/initialSetupTextInputLayoutUserName2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp">
+
+                <EditText
+                    android:id="@+id/initialSetupUserName2EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:inputType="text|textVisiblePassword"
+                    android:lines="1"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/initialSetupTextInputLayoutPassword2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp">
+
+                <EditText
+                    android:id="@+id/initialSetupPassword2EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="numberPassword"
+                    android:lines="1"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Profile 3"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/initialSetupTextInputLayoutUserName3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp">
+
+                <EditText
+                    android:id="@+id/initialSetupUserName3EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:inputType="text|textVisiblePassword"
+                    android:lines="1"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/initialSetupTextInputLayoutPassword3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:paddingBottom="8dp">
+
+                <EditText
+                    android:id="@+id/initialSetupPassword3EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="numberPassword"
+                    android:lines="1"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/initialSetupDoneButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:text="Proceed" />
+
+</RelativeLayout>

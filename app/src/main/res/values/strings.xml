@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GLAU Firewall Authenticator</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!--Application specific strings-->
+    <string name="about">About</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="settings">Settings</string>
+    <string name="initial_setup">Initial Setup</string>
+    <string name="profile_preferences">Profile Preferences</string>
+    <string name="personal_info">Personal Info</string>
+    <string name="name">Name</string>
+    <string name="profile_1">Profile 1</string>
+    <string name="profile_2">Profile 2</string>
+    <string name="profile_3">Profile 3</string>
+</resources>

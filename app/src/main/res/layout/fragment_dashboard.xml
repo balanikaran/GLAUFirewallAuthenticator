@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/statusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:text="Status:"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/statusInfoActiveTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/statusTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Active"
+        android:textAllCaps="true"
+        android:textColor="#64dd17"
+        android:visibility="invisible"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/statusInfoInactiveTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/statusTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Inactive"
+        android:textAllCaps="true"
+        android:textColor="#d50000"
+        android:textSize="48sp"
+        android:visibility="invisible"
+        android:textStyle="bold" />
+
+    <com.polyak.iconswitch.IconSwitch
+        android:id="@+id/serviceIconSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:isw_icon_right="@drawable/ic_check"
+        app:isw_icon_left="@drawable/ic_cancel"
+        app:isw_default_selection="left"
+        app:isw_inactive_tint_icon_right="#64dd17"
+        app:isw_inactive_tint_icon_left="#d50000"
+        app:isw_icon_size="30dp"
+        app:isw_thumb_color_left="#d50000"
+        app:isw_thumb_color_right="#64dd17" />
+
+    <TextView
+        android:id="@+id/switchInfoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serviceIconSwitch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Toggle the service using the switch above" />
+
+
+</RelativeLayout>
