@@ -35,6 +35,7 @@ public class HelperForegroundService extends Service {
         Notification foregroundServiceNotification = new NotificationCompat.Builder(getApplicationContext(),
                 notificationChannelIdForHelperService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
+                .setContentTitle("Service Initiated")
                 .build();
 
         startForeground(foregroundServiceID, foregroundServiceNotification);

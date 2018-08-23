@@ -1,9 +1,12 @@
 package com.krnblni.evetech.glaufirewallauthenticator.fragments;
 
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,8 +31,8 @@ import java.util.regex.Pattern;
 
 public class SettingsFragment extends Fragment {
 
-    TextView settingsNameTextView, settingsProfile1TextView, settingsProfile2TextView, settingsProfile3TextView, settingsVersionTextView;
-    LinearLayout settingsNameLinearLayout, settingsProfile1LinearLayout, settingsProfile2LinearLayout, settingsProfile3LinearLayout;
+    TextView settingsNameTextView, settingsProfile1TextView, settingsVersionTextView;
+    LinearLayout settingsNameLinearLayout, settingsProfile1LinearLayout, settingsHavingProblemsLinearLayout, settingsRateOnGooglePlayLinearLayout;
     Context context;
 
     SharedPreferences sharedPreferences;
@@ -65,21 +68,46 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        settingsProfile2LinearLayout.setOnClickListener(new View.OnClickListener() {
+        settingsHavingProblemsLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editProfileViaDialog(v);
+                troubleShootingDialog();
             }
         });
 
-        settingsProfile3LinearLayout.setOnClickListener(new View.OnClickListener() {
+        settingsRateOnGooglePlayLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editProfileViaDialog(v);
+                openMarketPageForApp();
             }
         });
 
         return view;
+    }
+
+    private void openMarketPageForApp() {
+
+        Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
+        Intent marketIntent = new Intent(Intent.ACTION_VIEW, uri);
+        marketIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+
+        try {
+            startActivity(marketIntent);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
+        }
+
+    }
+
+    private void troubleShootingDialog() {
+
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.alert_dialog_this_might_help, null, false);
+        AlertDialog alertDialog = new AlertDialog.Builder(context)
+                .setTitle("This might help you!")
+                .setCancelable(true)
+                .setView(dialogView)
+                .create();
+        alertDialog.show();
     }
 
     private void editProfileViaDialog(View v) {
@@ -88,18 +116,10 @@ public class SettingsFragment extends Fragment {
 
         if (v.getId() == R.id.settingsProfile1LinearLayout) {
             profileNumber = 1;
-        } else if (v.getId() == R.id.settingsProfile2LinearLayout) {
-            profileNumber = 2;
-        } else if (v.getId() == R.id.settingsProfile3LinearLayout) {
-            profileNumber = 3;
         }
 
-        final String userName1, userName2, userName3;
-
-        userName1 = sharedPreferences.getString("username1", "null");
-        userName2 = sharedPreferences.getString("username2", "null");
-        userName3 = sharedPreferences.getString("username3", "null");
-
+//        final String userName1, userName2, userName3;
+//        userName1 = sharedPreferences.getString("username1", "null");
 
         View dialogView = LayoutInflater.from(context).inflate(R.layout.alert_dialog_edit_profile, null, false);
 
@@ -127,30 +147,8 @@ public class SettingsFragment extends Fragment {
                         boolean password = false;
 
                         if (!TextUtils.isEmpty(alertDialogUserNameEditText.getText().toString().toLowerCase())) {
-
-                            if (
-                                    (finalProfileNumber == 1
-                                            && (TextUtils.equals(alertDialogUserNameEditText.getText().toString().toLowerCase(), userName2)
-                                            || TextUtils.equals(alertDialogUserNameEditText.getText().toString().toLowerCase(), userName3)))
-
-                                            || (finalProfileNumber == 2
-                                            && (TextUtils.equals(alertDialogUserNameEditText.getText().toString().toLowerCase(), userName1)
-                                            || TextUtils.equals(alertDialogUserNameEditText.getText().toString().toLowerCase(), userName3)))
-
-                                            || (finalProfileNumber == 3
-                                            && (TextUtils.equals(alertDialogUserNameEditText.getText().toString().toLowerCase(), userName1)
-                                            || TextUtils.equals(alertDialogUserNameEditText.getText().toString().toLowerCase(), userName2)))
-
-                                    ) {
-
-                                alertDialogTextInputLayoutUserName.setError("Same profiles are not allowed");
-
-                                Toast.makeText(context, "Same profiles are not allowed", Toast.LENGTH_SHORT).show();
-
-                            } else {
-                                alertDialogTextInputLayoutUserName.setErrorEnabled(false);
-                                userName = true;
-                            }
+                            alertDialogTextInputLayoutUserName.setErrorEnabled(false);
+                            userName = true;
                         } else {
                             alertDialogTextInputLayoutUserName.setError("This cannot be empty");
                             Toast.makeText(context, "Invalid Username", Toast.LENGTH_SHORT).show();
@@ -178,7 +176,7 @@ public class SettingsFragment extends Fragment {
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Toast.makeText(context, "Operation Cancelled!", Toast.LENGTH_SHORT).show();
                     }
                 }).create();
 
@@ -237,9 +235,6 @@ public class SettingsFragment extends Fragment {
 
         settingsNameTextView.setText(sharedPreferences.getString("name", "null"));
         settingsProfile1TextView.setText(sharedPreferences.getString("username1", "null"));
-        settingsProfile2TextView.setText(sharedPreferences.getString("username2", "null"));
-        settingsProfile3TextView.setText(sharedPreferences.getString("username3", "null"));
-
 
         settingsVersionTextView.setText("Version: " + BuildConfig.VERSION_NAME);
     }
@@ -248,16 +243,14 @@ public class SettingsFragment extends Fragment {
 
         settingsNameTextView = view.findViewById(R.id.settingsNameTextView);
         settingsProfile1TextView = view.findViewById(R.id.settingsProfile1TextView);
-        settingsProfile2TextView = view.findViewById(R.id.settingsProfile2TextView);
-        settingsProfile3TextView = view.findViewById(R.id.settingsProfile3TextView);
 
         settingsVersionTextView = view.findViewById(R.id.settingsVersionTextView);
 
         settingsNameLinearLayout = view.findViewById(R.id.settingsNameLinearLayout);
         settingsProfile1LinearLayout = view.findViewById(R.id.settingsProfile1LinearLayout);
-        settingsProfile2LinearLayout = view.findViewById(R.id.settingsProfile2LinearLayout);
-        settingsProfile3LinearLayout = view.findViewById(R.id.settingsProfile3LinearLayout);
 
+        settingsHavingProblemsLinearLayout = view.findViewById(R.id.settingsHavingProblemsLinearLayout);
+        settingsRateOnGooglePlayLinearLayout = view.findViewById(R.id.settingsRateOnGooglePlayLinearLayout);
 
     }
 }

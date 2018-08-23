@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,13 +114,4 @@ public class DashboardFragment extends Fragment {
         }
         return false;
     }
-
-//    public static void startRepeatingAlarm(Context context) {
-//        Intent restartIntent = new Intent(context, RestartForegroundServiceReceiver.class);
-//        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, restartIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-//        AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-//        // Remove any previous pending intent.
-//        alarmManager.cancel(pendingIntent);
-//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),60001, pendingIntent);
-//    }
 }

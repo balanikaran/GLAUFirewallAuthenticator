@@ -15,4 +15,13 @@
     <string name="profile_1">Profile 1</string>
     <string name="profile_2">Profile 2</string>
     <string name="profile_3">Profile 3</string>
+    <string name="about_app_desc">This app lets you enjoy your chat or video streaming without firewall timeout problem on Fortinet within <b>GLA University\'s</b> Network.</string>
+    <string name="dev_by">Developed by:- <b>Karan Balani</b></string>
+    <string name="let_s_get_social_with_the_dev">Let\'s get social with the dev ;)</string>
+    <string name="coded_with_for_glau">Coded with 🔥 + 🧠 for GLAU</string>
+    <string name="troubleshooting">Troubleshooting</string>
+    <string name="rate_the_app_on_play_store">Rate the app on Play Store</string>
+    <string name="having_problems">Having Problems?</string>
+    <string name="service_getting_killed_randomly">Service getting killed randomly?</string>
+    <string name="service_killed_help_desc">Some of the devices might not allow the service to run all the time due to background computation restrictions by manufacturers, for instance you may white list the app from <b>Settings > Battery > Battery Optimisation > \'Don\'t Optimise this app\'</b>  \n\n  OR  \n\n  MI users may whitelist the app from <b>Security App > Permissions > AutoStart > \'Allow this app\'</b> \n\n\n *Look for similar settings, varies with device!*</string>
 </resources>
