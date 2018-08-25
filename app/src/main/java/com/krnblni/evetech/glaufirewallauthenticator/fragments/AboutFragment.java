@@ -72,7 +72,7 @@ public class AboutFragment extends Fragment {
 
     private void openFacebookId() {
 
-        Uri uri = Uri.parse("fb://profile/" + "krnblni");
+        Uri uri = Uri.parse("fb://profile/" + "100004179423460");
         Intent facebookIntent = new Intent(Intent.ACTION_VIEW, uri);
         facebookIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
         try {
@@ -97,7 +97,7 @@ public class AboutFragment extends Fragment {
     }
 
     private void openLinkedInId() {
-        Uri uri = Uri.parse("linkedin://profile/" + "krnblni");
+        Uri uri = Uri.parse("linkedin://add/%@" + "krnblni");
         Intent linkedInIntent = new Intent(Intent.ACTION_VIEW, uri);
         linkedInIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
         try {
@@ -108,11 +108,9 @@ public class AboutFragment extends Fragment {
     }
 
     private void findAllIds(View view) {
-
         linkedInLinkImageView = view.findViewById(R.id.linkedInLinkImageView);
         twitterLinkImageView = view.findViewById(R.id.twitterLinkImageView);
         facebookLinkImageView = view.findViewById(R.id.facebookLinkImageView);
         instagramLinkImageView = view.findViewById(R.id.instagramLinkImageView);
-
     }
 }

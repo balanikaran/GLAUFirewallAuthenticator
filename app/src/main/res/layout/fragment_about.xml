@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -26,11 +26,45 @@
             android:textSize="20sp" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#bdbdbd"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/dividerViewA"
+        android:layout_below="@id/eveTechLinearLayout"/>
+
+    <LinearLayout
+        android:id="@+id/glauFireAuthLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:layout_below="@id/dividerViewA"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="8sp"
+            android:src="@drawable/web_hi_res_512" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="GLAU FireAuth"
+            android:textSize="20sp" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/aboutAppDecsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/eveTechLinearLayout"
+        android:layout_below="@id/glauFireAuthLinearLayout"
         android:layout_centerHorizontal="true"
         android:layout_margin="24dp"
         android:text="@string/about_app_desc"

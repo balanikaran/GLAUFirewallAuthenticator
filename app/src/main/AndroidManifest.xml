@@ -26,7 +26,6 @@
         </activity>
 
         <receiver android:name=".receivers.WifiConnectionStateReceiver" />
-        <receiver android:name=".receivers.RestartForegroundServiceReceiver" />
 
         <service
             android:name=".services.HelperForegroundService"

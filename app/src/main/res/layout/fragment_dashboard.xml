@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#ffffff"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <TextView
         android:id="@+id/statusTextView"
@@ -25,9 +24,9 @@
         android:text="Active"
         android:textAllCaps="true"
         android:textColor="#64dd17"
-        android:visibility="invisible"
         android:textSize="48sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/statusInfoInactiveTextView"
@@ -40,20 +39,20 @@
         android:textAllCaps="true"
         android:textColor="#d50000"
         android:textSize="48sp"
-        android:visibility="invisible"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
     <com.polyak.iconswitch.IconSwitch
         android:id="@+id/serviceIconSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        app:isw_icon_right="@drawable/ic_check"
-        app:isw_icon_left="@drawable/ic_cancel"
         app:isw_default_selection="left"
-        app:isw_inactive_tint_icon_right="#64dd17"
-        app:isw_inactive_tint_icon_left="#d50000"
+        app:isw_icon_left="@drawable/ic_cancel"
+        app:isw_icon_right="@drawable/ic_check"
         app:isw_icon_size="30dp"
+        app:isw_inactive_tint_icon_left="#d50000"
+        app:isw_inactive_tint_icon_right="#64dd17"
         app:isw_thumb_color_left="#d50000"
         app:isw_thumb_color_right="#64dd17" />
 
@@ -65,6 +64,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:text="Toggle the service using the switch above" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="4dp"
+        android:text="Caution: Keep the Mobile Data off while using this app!"/>
 
 
 </RelativeLayout>

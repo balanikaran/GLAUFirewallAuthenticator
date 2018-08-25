@@ -84,7 +84,7 @@ public class LoginForegroundService extends Service {
                     public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                         super.onReceivedError(view, request, error);
                         Log.e(TAG, "onReceivedError: " + "An error occurred while logging in");
-                        //updateNotification("Login Error - (Concurrent/Unsuccessful");
+                        //updateNotification("Login Error - (Concurrent/Unsuccessful)");
                         view.destroy();
                         stopSelf();
                     }
@@ -112,7 +112,7 @@ public class LoginForegroundService extends Service {
     public void updateNotification(String notificationMessage) {
         Notification foregroundServiceNotification = new NotificationCompat.Builder(getApplicationContext(),
                 notificationChannelIdForHelperService)
-                .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
+                .setSmallIcon(R.drawable.web_hi_res_512)
                 .setContentTitle(notificationMessage)
                 .build();
         NotificationManagerCompat.from(getApplicationContext()).notify(foregroundServiceID, foregroundServiceNotification);

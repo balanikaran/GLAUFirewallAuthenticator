@@ -1,10 +1,12 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'io.fabric'
+
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.krnblni.evetech.glaufirewallauthenticator"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0-beta1"
@@ -30,4 +32,10 @@ dependencies {
 
     implementation 'com.polyak:icon-switch:1.0.0'
     implementation "android.arch.work:work-runtime:1.0.0-alpha07"
+
+    implementation 'com.google.firebase:firebase-crash:16.0.1'
+
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
 }
+
+apply plugin: 'com.google.gms.google-services'
