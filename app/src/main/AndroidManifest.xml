@@ -34,10 +34,12 @@
         </receiver>
 
         <service
+            android:label="Helper Foreground Service"
             android:name=".services.HelperForegroundService"
             android:enabled="true"
             android:stopWithTask="false"/>
         <service
+            android:label="Login Foreground Service"
             android:name=".services.LoginForegroundService"
             android:enabled="true"
             android:stopWithTask="false"/>
