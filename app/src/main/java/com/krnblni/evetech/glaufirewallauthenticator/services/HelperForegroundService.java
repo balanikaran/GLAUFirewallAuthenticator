@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -17,7 +18,7 @@ public class HelperForegroundService extends Service {
 
     String TAG = "Logging - HelperForegroundService: ";
     String notificationChannelIdForHelperService = "1000";
-    int foregroundServiceID = 200;
+    int foregroundServiceID = 100;
 
     WifiConnectionStateReceiver wifiConnectionStateReceiver = new WifiConnectionStateReceiver();
 
