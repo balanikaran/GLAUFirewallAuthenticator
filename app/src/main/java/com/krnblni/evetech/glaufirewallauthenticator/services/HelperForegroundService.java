@@ -12,6 +12,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.krnblni.evetech.glaufirewallauthenticator.R;
+import com.krnblni.evetech.glaufirewallauthenticator.activities.MainActivity;
 import com.krnblni.evetech.glaufirewallauthenticator.receivers.WifiConnectionStateReceiver;
 
 public class HelperForegroundService extends Service {
@@ -33,10 +34,19 @@ public class HelperForegroundService extends Service {
 
         Log.e(TAG, "onCreate: " + "called");
 
+        Intent mainActivityIntent = new Intent(getApplicationContext(), MainActivity.class);
+        PendingIntent mainActivityPendingIntent = PendingIntent.getActivity(
+                getApplicationContext(),
+                300,
+                mainActivityIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
+
         Notification foregroundServiceNotification = new NotificationCompat.Builder(getApplicationContext(),
                 notificationChannelIdForHelperService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
                 .setContentTitle("Service is up and running ;)")
+                .setContentIntent(mainActivityPendingIntent)
                 .build();
 
         startForeground(foregroundServiceID, foregroundServiceNotification);
