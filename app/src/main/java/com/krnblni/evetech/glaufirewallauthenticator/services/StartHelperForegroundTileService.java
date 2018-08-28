@@ -10,6 +10,7 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 @TargetApi(Build.VERSION_CODES.N)
 public class StartHelperForegroundTileService extends TileService {
@@ -45,16 +46,20 @@ public class StartHelperForegroundTileService extends TileService {
         loginForegroundServiceIntent = new Intent(getApplicationContext(), LoginForegroundService.class);
 
         if (getQsTile().getState() == Tile.STATE_ACTIVE) {
-            editor.putBoolean("foregroundServiceStateUserPreference", true);
+            editor.putBoolean("foregroundServiceStateUserPreference", false);
             getApplicationContext().stopService(helperForegroundServiceIntent);
             getApplicationContext().stopService(loginForegroundServiceIntent);
             glauFireAuthTile.setState(Tile.STATE_INACTIVE);
             glauFireAuthTile.updateTile();
         } else if (getQsTile().getState() == Tile.STATE_INACTIVE) {
-            editor.putBoolean("foregroundServiceStateUserPreference", false);
-            ContextCompat.startForegroundService(getApplicationContext(), helperForegroundServiceIntent);
-            glauFireAuthTile.setState(Tile.STATE_ACTIVE);
-            glauFireAuthTile.updateTile();
+            if(sharedPreferences.getBoolean("initial_setup", false)){
+                editor.putBoolean("foregroundServiceStateUserPreference", true);
+                ContextCompat.startForegroundService(getApplicationContext(), helperForegroundServiceIntent);
+                glauFireAuthTile.setState(Tile.STATE_ACTIVE);
+                glauFireAuthTile.updateTile();
+            }else {
+                Toast.makeText(this, "Complete the initial setup first!", Toast.LENGTH_SHORT).show();
+            }
         }
         editor.apply();
     }

@@ -62,6 +62,8 @@ public class LoginForegroundService extends Service {
                 super.onReceivedError(view, request, error);
                 Log.e(TAG, "onReceivedError: " + "error occurred");
                 Log.e(TAG, "onReceivedError: " + "not inside GLAU network");
+                view.destroy();
+                stopSelf();
                 //updateNotification("Not inside GLAU Network");
             }
 
