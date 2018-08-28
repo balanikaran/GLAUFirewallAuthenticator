@@ -4,7 +4,6 @@ import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -57,6 +56,11 @@ public class HelperForegroundService extends Service {
     public void onDestroy() {
         super.onDestroy();
         Log.e(TAG, "onDestroy: " + "called");
-        unregisterReceiver(wifiConnectionStateReceiver);
+        try {
+            unregisterReceiver(wifiConnectionStateReceiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

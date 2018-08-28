@@ -12,8 +12,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
-        android:supportsRtl="true"
         android:screenOrientation="portrait"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme.Custom">
         <activity
             android:name=".activities.MainActivity"
@@ -27,22 +27,34 @@
         </activity>
 
         <receiver android:name=".receivers.WifiConnectionStateReceiver" />
-        <receiver android:name=".receivers.BootCompleteRunForegroundServiceReceiver" >
+        <receiver android:name=".receivers.BootCompleteRunForegroundServiceReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
         <service
-            android:label="Helper Foreground Service"
             android:name=".services.HelperForegroundService"
             android:enabled="true"
-            android:stopWithTask="false"/>
+            android:label="Helper Foreground Service"
+            android:stopWithTask="false" />
         <service
-            android:label="Login Foreground Service"
             android:name=".services.LoginForegroundService"
             android:enabled="true"
-            android:stopWithTask="false"/>
+            android:label="Login Foreground Service"
+            android:stopWithTask="false" />
+        <service
+            android:name=".services.StartHelperForegroundTileService"
+            android:icon="@drawable/ic_stat_app_icon_notification"
+            android:label="GLAU FireAuth"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="false" />
+        </service>
     </application>
 
 </manifest>
