@@ -1,6 +1,7 @@
 package com.krnblni.evetech.glaufirewallauthenticator.services;
 
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -35,7 +36,7 @@ public class HelperForegroundService extends Service {
         Notification foregroundServiceNotification = new NotificationCompat.Builder(getApplicationContext(),
                 notificationChannelIdForHelperService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
-                .setContentTitle("Service up and running ;)")
+                .setContentTitle("Service is up and running ;)")
                 .build();
 
         startForeground(foregroundServiceID, foregroundServiceNotification);
