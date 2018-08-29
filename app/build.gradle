@@ -14,12 +14,11 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
-<<<<<<< HEAD
-=======
-            shrinkResources true
->>>>>>> version1-beta1
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            release {
+                minifyEnabled true
+                shrinkResources true
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
         }
     }
 }
