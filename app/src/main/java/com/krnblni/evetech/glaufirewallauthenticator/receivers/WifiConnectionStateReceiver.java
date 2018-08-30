@@ -7,19 +7,21 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
 
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.RetryStrategy;
+import com.firebase.jobdispatcher.Trigger;
 import com.krnblni.evetech.glaufirewallauthenticator.services.LoginForegroundService;
-import com.krnblni.evetech.glaufirewallauthenticator.workers.ReInitiateLoginWorker;
-
-import java.util.concurrent.TimeUnit;
-
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
+import com.krnblni.evetech.glaufirewallauthenticator.services.LoginInitiatorJobService;
 
 public class WifiConnectionStateReceiver extends BroadcastReceiver {
 
     String TAG = "Logging - WifiConnectionStateReceiver ";
     Intent loginForegroundServiceIntent;
+
+    FirebaseJobDispatcher firebaseJobDispatcher;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -36,19 +38,23 @@ public class WifiConnectionStateReceiver extends BroadcastReceiver {
                 Log.e(TAG, "onReceive: " + "connected");
                 context.stopService(loginForegroundServiceIntent);
                 context.startService(loginForegroundServiceIntent);
-                PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(
-                        ReInitiateLoginWorker.class, PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, TimeUnit.MILLISECONDS,
-                        PeriodicWorkRequest.MIN_PERIODIC_FLEX_MILLIS, TimeUnit.MILLISECONDS
-                ).addTag("LoginPeriodicWorkRequest").build();
-                WorkManager.getInstance().enqueueUniquePeriodicWork(
-                        "ReInitiateLogin",
-                        ExistingPeriodicWorkPolicy.REPLACE,
-                        periodicWorkRequest
-                );
+
+                firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(context));
+                Job job = firebaseJobDispatcher.newJobBuilder()
+                        .setService(LoginInitiatorJobService.class)
+                        .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
+                        .setRecurring(true)
+                        .setTag("reInitiateLoginJobServiceTag")
+                        .setTrigger(Trigger.executionWindow(0, 480))
+                        .setRetryStrategy(RetryStrategy.DEFAULT_LINEAR)
+                        .setReplaceCurrent(true)
+                        .build();
+
+                firebaseJobDispatcher.mustSchedule(job);
             } else if (!networkInfo.isConnected()) {
                 Log.e(TAG, "onReceive: " + "disconnected");
                 context.stopService(loginForegroundServiceIntent);
-                WorkManager.getInstance().cancelAllWorkByTag("LoginPeriodicWorkRequest");
+                firebaseJobDispatcher.cancel("reInitiateLoginJobServiceTag");
             }
         }
 

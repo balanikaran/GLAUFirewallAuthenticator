@@ -12,12 +12,16 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+
 @TargetApi(Build.VERSION_CODES.N)
 public class StartHelperForegroundTileService extends TileService {
 
     String TAG = "Logging - StartHelperForegroundTileService";
     Tile glauFireAuthTile;
     Intent helperForegroundServiceIntent, loginForegroundServiceIntent;
+    FirebaseJobDispatcher firebaseJobDispatcher;
 
     @Override
     public void onTileAdded() {
@@ -40,6 +44,8 @@ public class StartHelperForegroundTileService extends TileService {
         SharedPreferences sharedPreferences = getSharedPreferences("initial_setup", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+        firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(getApplicationContext()));
+
         Log.e(TAG, "onClick: " + getQsTile().getState());
 
         helperForegroundServiceIntent = new Intent(getApplicationContext(), HelperForegroundService.class);
@@ -49,6 +55,7 @@ public class StartHelperForegroundTileService extends TileService {
             editor.putBoolean("foregroundServiceStateUserPreference", false);
             getApplicationContext().stopService(helperForegroundServiceIntent);
             getApplicationContext().stopService(loginForegroundServiceIntent);
+            firebaseJobDispatcher.cancel("reInitiateLoginJobServiceTag");
             glauFireAuthTile.setState(Tile.STATE_INACTIVE);
             glauFireAuthTile.updateTile();
         } else if (getQsTile().getState() == Tile.STATE_INACTIVE) {
@@ -101,15 +108,4 @@ public class StartHelperForegroundTileService extends TileService {
         }
         return false;
     }
-
-//    private void updateMainActivityIfRunning(){
-//        ActivityManager activityManager = (ActivityManager)getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
-//        if (activityManager != null) {
-//            String foregroundActivtyClassName = activityManager.getRunningTasks(1).get(0).topActivity.getShortClassName();
-//            Log.e(TAG, "updateMainActivityIfRunning: " + foregroundActivtyClassName );
-//            if(foregroundActivtyClassName.equals(".activities.MainActivity")){
-//
-//            }
-//        }
-//    }
 }

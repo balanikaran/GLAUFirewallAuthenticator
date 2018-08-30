@@ -57,6 +57,8 @@ public class LoginForegroundService extends Service {
         webView.loadUrl(loginUrl);
         webView.setWebViewClient(new WebViewClient() {
 
+            int tries = 0;
+
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);

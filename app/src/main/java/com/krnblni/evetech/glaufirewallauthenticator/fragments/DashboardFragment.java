@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.krnblni.evetech.glaufirewallauthenticator.R;
 import com.krnblni.evetech.glaufirewallauthenticator.services.HelperForegroundService;
 import com.krnblni.evetech.glaufirewallauthenticator.services.LoginForegroundService;
@@ -31,6 +33,8 @@ public class DashboardFragment extends Fragment {
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
+    FirebaseJobDispatcher firebaseJobDispatcher;
 
     Intent helperForegroundServiceIntent;
     Intent loginForegroundServiceIntent;
@@ -54,6 +58,8 @@ public class DashboardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         sharedPreferences = context.getSharedPreferences("initial_setup", Context.MODE_PRIVATE);
+
+        firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(context));
 
         serviceIconSwitch = view.findViewById(R.id.serviceIconSwitch);
         statusInfoActiveTextView = view.findViewById(R.id.statusInfoActiveTextView);
@@ -91,6 +97,7 @@ public class DashboardFragment extends Fragment {
                     statusInfoInactiveTextView.setVisibility(View.VISIBLE);
                     context.stopService(helperForegroundServiceIntent);
                     context.stopService(loginForegroundServiceIntent);
+                    firebaseJobDispatcher.cancel("reInitiateLoginJobServiceTag");
                 }
                 editor.apply();
             }
