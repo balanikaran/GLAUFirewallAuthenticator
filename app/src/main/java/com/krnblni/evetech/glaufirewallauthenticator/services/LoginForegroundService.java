@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -19,7 +18,7 @@ import com.krnblni.evetech.glaufirewallauthenticator.R;
 public class LoginForegroundService extends Service {
 
     String TAG = "Logging - LoginForegroundService ";
-    String loginUrl = "http://172.16.10.20:1000/login?011abaee7cf9a5fc";
+    String loginUrl = getString(R.string.login_url_glau);
     int foregroundServiceID = 200;
     String notificationChannelIdForHelperService = "1000";
 
@@ -75,15 +74,19 @@ public class LoginForegroundService extends Service {
                 String username = sharedPreferences.getString("username1", "null");
                 String password = sharedPreferences.getString("password1", "null");
                 view.loadUrl(
-                        "javascript:(function() { "
-                                + "var form = document.forms[0];"
-                                + "var usr = form.elements[3];"
-                                + "var pass = form.elements[4];"
-                                + "var con = form.elements[5];"
-                                + "usr.value = '" + username + "' ;"
-                                + "pass.value = '" + password + "' ;"
-                                + "con.click();" +
-                                "})()"
+                        getString(R.string.secret_1)
+                                + getString(R.string.secret_2)
+                                + getString(R.string.secret_3)
+                                + getString(R.string.secret_4)
+                                + getString(R.string.secret_5)
+                                + getString(R.string.secret_6)
+                                + username
+                                + getString(R.string.secret_7)
+                                + getString(R.string.secret_8)
+                                + password
+                                + getString(R.string.secret_9)
+                                + getString(R.string.secret_10)
+                                + getString(R.string.secret_11)
                 );
 
                 view.setWebViewClient(new WebViewClient() {

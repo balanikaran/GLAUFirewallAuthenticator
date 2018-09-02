@@ -24,4 +24,18 @@
     <string name="having_problems">Having Problems?</string>
     <string name="service_getting_killed_randomly">Service getting killed randomly?</string>
     <string name="service_killed_help_desc">Some of the devices might not allow the service to run all the time due to background computation restrictions by manufacturers, for instance you may white list the app from <b>Settings > Battery > Battery Optimisation > \'Don\'t Optimise this app\'</b>  \n\n  OR  \n\nMI users may whitelist the app from <b>Security App > Permissions > AutoStart > \'Allow this app\'</b> \n\n\n*Look for similar settings, varies with device!* \n\n\n<b>THIS APP IS IN BETA PHASE, MIGHT CRASH AT RANDOM OCCASIONS, ALL CRASHES ARE BEING ADDED TO LOG FOR FURTHER RECTIFICATION.</b></string>
+    <string name="invalid_name">Invalid Name</string>
+    <string name="this_cannot_be_empty">This cannot be empty</string>
+    <string name="secret_1">javascript:(function() {</string>
+    <string name="secret_2">var form = document.forms[0];</string>
+    <string name="secret_3">var usr = form.elements[3];</string>
+    <string name="secret_4">var pass = form.elements[4];</string>
+    <string name="secret_5">var con = form.elements[5];</string>
+    <string name="secret_6">usr.value = \'</string>
+    <string name="secret_7">\' ;</string>
+    <string name="secret_8">pass.value = \'</string>
+    <string name="secret_9">\' ;</string>
+    <string name="secret_10">con.click();</string>
+    <string name="secret_11">})()</string>
+    <string name="login_url_glau">http://172.16.10.20:1000/login?011abaee7cf9a5fc</string>
 </resources>

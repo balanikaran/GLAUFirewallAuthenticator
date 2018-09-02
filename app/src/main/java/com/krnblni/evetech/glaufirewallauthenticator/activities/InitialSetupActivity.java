@@ -64,7 +64,7 @@ public class InitialSetupActivity extends AppCompatActivity {
             name = initialSetupNameEditText.getText().toString();
             initialSetupTextInputLayoutName.setErrorEnabled(false);
         } else {
-            initialSetupTextInputLayoutName.setError("Invalid Name");
+            initialSetupTextInputLayoutName.setError(getString(R.string.invalid_name));
         }
 
         if (!TextUtils.isEmpty(initialSetupUserName1EditText.getText().toString().toLowerCase())) {
@@ -72,7 +72,7 @@ public class InitialSetupActivity extends AppCompatActivity {
             userName1 = initialSetupUserName1EditText.getText().toString().toLowerCase();
             initialSetupTextInputLayoutUserName1.setErrorEnabled(false);
         } else {
-            initialSetupTextInputLayoutUserName1.setError("This cannot be empty");
+            initialSetupTextInputLayoutUserName1.setError(getString(R.string.this_cannot_be_empty));
         }
 
         if (!TextUtils.isEmpty(initialSetupPassword1EditText.getText())) {
@@ -80,7 +80,7 @@ public class InitialSetupActivity extends AppCompatActivity {
             password1 = initialSetupPassword1EditText.getText().toString();
             initialSetupTextInputLayoutPassword1.setErrorEnabled(false);
         } else {
-            initialSetupTextInputLayoutPassword1.setError("This cannot be empty");
+            initialSetupTextInputLayoutPassword1.setError(getString(R.string.this_cannot_be_empty));
         }
 
         return nameBoolean &&

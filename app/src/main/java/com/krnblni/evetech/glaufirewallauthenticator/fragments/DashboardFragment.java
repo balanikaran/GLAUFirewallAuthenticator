@@ -52,13 +52,10 @@ public class DashboardFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         Log.e(TAG, "onCreateView: " + "called");
-
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         sharedPreferences = context.getSharedPreferences("initial_setup", Context.MODE_PRIVATE);
-
         firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(context));
 
         serviceIconSwitch = view.findViewById(R.id.serviceIconSwitch);
@@ -106,7 +103,6 @@ public class DashboardFragment extends Fragment {
     }
 
     private boolean isHelperServiceRunning() {
-
         ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         if (manager != null) {
             for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {

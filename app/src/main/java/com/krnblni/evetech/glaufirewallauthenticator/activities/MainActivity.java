@@ -17,7 +17,7 @@ import com.krnblni.evetech.glaufirewallauthenticator.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    String TAG = "Logging - MainActivity";
+    final String TAG = "Logging - MainActivity";
 
     FrameLayout navigationPageContainer;
     Toolbar toolbar;

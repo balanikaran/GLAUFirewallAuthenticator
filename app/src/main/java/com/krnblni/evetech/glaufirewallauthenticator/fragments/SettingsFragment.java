@@ -34,7 +34,6 @@ public class SettingsFragment extends Fragment {
     TextView settingsNameTextView, settingsProfile1TextView, settingsVersionTextView;
     LinearLayout settingsNameLinearLayout, settingsProfile1LinearLayout, settingsHavingProblemsLinearLayout, settingsRateOnGooglePlayLinearLayout;
     Context context;
-
     SharedPreferences sharedPreferences;
 
     @Override
@@ -86,21 +85,17 @@ public class SettingsFragment extends Fragment {
     }
 
     private void openMarketPageForApp() {
-
         Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
         Intent marketIntent = new Intent(Intent.ACTION_VIEW, uri);
         marketIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-
         try {
             startActivity(marketIntent);
         } catch (ActivityNotFoundException e) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
         }
-
     }
 
     private void troubleShootingDialog() {
-
         View dialogView = LayoutInflater.from(context).inflate(R.layout.alert_dialog_this_might_help, null, false);
         AlertDialog alertDialog = new AlertDialog.Builder(context)
                 .setTitle("This might help you!")
@@ -111,15 +106,11 @@ public class SettingsFragment extends Fragment {
     }
 
     private void editProfileViaDialog(View v) {
-
         int profileNumber = 0;
 
         if (v.getId() == R.id.settingsProfile1LinearLayout) {
             profileNumber = 1;
         }
-
-//        final String userName1, userName2, userName3;
-//        userName1 = sharedPreferences.getString("username1", "null");
 
         View dialogView = LayoutInflater.from(context).inflate(R.layout.alert_dialog_edit_profile, null, false);
 
