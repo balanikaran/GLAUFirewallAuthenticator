@@ -46,7 +46,7 @@ public class WifiConnectionStateReceiver extends BroadcastReceiver {
                         .setRecurring(true)
                         .setTag("reInitiateLoginJobServiceTag")
                         .setTrigger(Trigger.executionWindow(0, 480))
-                        .setRetryStrategy(RetryStrategy.DEFAULT_LINEAR)
+                        .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                         .setReplaceCurrent(true)
                         .build();
 

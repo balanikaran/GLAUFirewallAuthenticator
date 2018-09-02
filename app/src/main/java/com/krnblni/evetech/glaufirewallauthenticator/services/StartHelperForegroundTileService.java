@@ -97,7 +97,6 @@ public class StartHelperForegroundTileService extends TileService {
     }
 
     private boolean isHelperServiceRunning() {
-
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         if (manager != null) {
             for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
