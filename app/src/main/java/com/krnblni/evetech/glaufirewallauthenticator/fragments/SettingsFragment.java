@@ -1,6 +1,7 @@
 package com.krnblni.evetech.glaufirewallauthenticator.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,13 +27,15 @@ import android.widget.Toast;
 import com.krnblni.evetech.glaufirewallauthenticator.BuildConfig;
 import com.krnblni.evetech.glaufirewallauthenticator.R;
 
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SettingsFragment extends Fragment {
 
     TextView settingsNameTextView, settingsProfile1TextView, settingsVersionTextView;
-    LinearLayout settingsNameLinearLayout, settingsProfile1LinearLayout, settingsHavingProblemsLinearLayout, settingsRateOnGooglePlayLinearLayout;
+    LinearLayout settingsNameLinearLayout, settingsProfile1LinearLayout,
+            settingsHavingProblemsLinearLayout, settingsRateOnGooglePlayLinearLayout, settingsViewPrivacyPolicyLinearLayout;
     Context context;
     SharedPreferences sharedPreferences;
 
@@ -81,7 +84,20 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        settingsViewPrivacyPolicyLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPrivacyPolicyWebPage();
+            }
+        });
+
         return view;
+    }
+
+    private void openPrivacyPolicyWebPage() {
+        Uri uri = Uri.parse("https://www.freeprivacypolicy.com/privacy/view/7e565d8445e144f227709d97a645fee6");
+        Intent privacyPolicyIntent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(privacyPolicyIntent);
     }
 
     private void openMarketPageForApp() {
@@ -171,7 +187,7 @@ public class SettingsFragment extends Fragment {
                     }
                 }).create();
 
-        alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        Objects.requireNonNull(alertDialog.getWindow()).setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         alertDialog.show();
 
     }
@@ -217,11 +233,12 @@ public class SettingsFragment extends Fragment {
                     }
                 }).create();
 
-        alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        Objects.requireNonNull(alertDialog.getWindow()).setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
         alertDialog.show();
     }
 
+    @SuppressLint("SetTextI18n")
     private void setValues() {
 
         settingsNameTextView.setText(sharedPreferences.getString("name", "null"));
@@ -242,6 +259,6 @@ public class SettingsFragment extends Fragment {
 
         settingsHavingProblemsLinearLayout = view.findViewById(R.id.settingsHavingProblemsLinearLayout);
         settingsRateOnGooglePlayLinearLayout = view.findViewById(R.id.settingsRateOnGooglePlayLinearLayout);
-
+        settingsViewPrivacyPolicyLinearLayout = view.findViewById(R.id.settingsViewPrivacyPolicyLinearLayout);
     }
 }

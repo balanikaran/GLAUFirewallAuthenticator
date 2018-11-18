@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
-        android:text="Status:"
+        android:text="@string/status"
         android:textSize="24sp" />
 
     <TextView
@@ -21,7 +21,7 @@
         android:layout_below="@id/statusTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Active"
+        android:text="@string/active"
         android:textAllCaps="true"
         android:textColor="#64dd17"
         android:textSize="48sp"
@@ -35,7 +35,7 @@
         android:layout_below="@id/statusTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Inactive"
+        android:text="@string/inactive"
         android:textAllCaps="true"
         android:textColor="#d50000"
         android:textSize="48sp"
@@ -63,7 +63,7 @@
         android:layout_below="@id/serviceIconSwitch"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Toggle the service using the switch above" />
+        android:text="@string/toggle_the_service_using_the_switch_above" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="4dp"
-        android:text="Caution: Keep the Mobile Data off while using this app!"/>
+        android:text="@string/caution_keep_the_mobile_data_off_while_using_this_app"/>
 
 
 </RelativeLayout>

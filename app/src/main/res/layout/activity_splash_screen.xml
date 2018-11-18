@@ -19,14 +19,15 @@
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:src="@drawable/web_hi_res_512" />
+            android:src="@drawable/web_hi_res_512"
+            android:contentDescription="@string/glau_fireauth_logo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="32dp"
-            android:text="GLAU FireAuth"
+            android:text="@string/app_name"
             android:textAlignment="center"
             android:textSize="32sp" />
 
@@ -45,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="5dp"
-            android:text="powered by" />
+            android:text="@string/powered_by" />
 
         <ImageView
             android:layout_width="30dp"
@@ -57,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="5dp"
-            android:text="Evening Technologies" />
+            android:text="@string/evening_technologies" />
 
     </LinearLayout>
 

@@ -16,13 +16,14 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="8sp"
-            android:src="@drawable/evetech_logo" />
+            android:src="@drawable/evetech_logo"
+            android:contentDescription="@string/evening_technologies" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Evening Technologies"
+            android:text="@string/evening_technologies"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -50,13 +51,14 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="8sp"
-            android:src="@drawable/web_hi_res_512" />
+            android:src="@drawable/web_hi_res_512"
+            android:contentDescription="@string/app_name" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="GLAU FireAuth"
+            android:text="@string/app_name"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -107,7 +109,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:src="@drawable/ic_linkedin" />
+                android:src="@drawable/ic_linkedin"
+                android:contentDescription="@string/linkedin_url" />
 
             <ImageView
                 android:id="@+id/twitterLinkImageView"
@@ -115,7 +118,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:src="@drawable/ic_twitter" />
+                android:src="@drawable/ic_twitter"
+                android:contentDescription="@string/twitter_url" />
 
             <ImageView
                 android:id="@+id/facebookLinkImageView"
@@ -123,7 +127,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:src="@drawable/ic_facebook" />
+                android:src="@drawable/ic_facebook"
+                android:contentDescription="@string/facebook_url" />
 
             <ImageView
                 android:id="@+id/instagramLinkImageView"
@@ -131,7 +136,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:src="@drawable/ic_instagram" />
+                android:src="@drawable/ic_instagram"
+                android:contentDescription="@string/instagram_url" />
 
         </LinearLayout>
     </LinearLayout>

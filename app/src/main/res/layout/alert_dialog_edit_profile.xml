@@ -18,7 +18,7 @@
             android:id="@+id/alertDialogUserNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="@string/username"
             android:inputType="text|textVisiblePassword"
             android:lines="1"
             android:maxLines="1" />
@@ -37,7 +37,7 @@
             android:id="@+id/alertDialogPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="numberPassword"
             android:lines="1"
             android:maxLines="1" />

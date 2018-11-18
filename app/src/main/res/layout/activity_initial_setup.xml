@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Personal Information"
+                android:text="@string/personal_information"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -67,7 +67,7 @@
                     android:id="@+id/initialSetupNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
+                    android:hint="@string/name"
                     android:inputType="textCapWords|textNoSuggestions"
                     android:lines="1"
                     android:maxLines="1" />
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Profile 1"
+                android:text="@string/profile_1"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -95,7 +95,7 @@
                     android:id="@+id/initialSetupUserName1EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
+                    android:hint="@string/username"
                     android:inputType="text|textVisiblePassword"
                     android:lines="1"
                     android:maxLines="1" />
@@ -114,7 +114,7 @@
                     android:id="@+id/initialSetupPassword1EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="numberPassword"
                     android:lines="1"
                     android:maxLines="1" />
@@ -132,6 +132,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:text="Proceed" />
+        android:text="@string/proceed" />
 
 </RelativeLayout>

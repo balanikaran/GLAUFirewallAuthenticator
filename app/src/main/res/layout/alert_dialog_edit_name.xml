@@ -17,7 +17,7 @@
             android:id="@+id/alertDialogNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
+            android:hint="@string/name"
             android:inputType="textCapWords|textNoSuggestions"
             android:lines="1"
             android:maxLines="1" />

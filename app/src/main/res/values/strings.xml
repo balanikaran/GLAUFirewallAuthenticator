@@ -38,4 +38,24 @@
     <string name="secret_10">con.click();</string>
     <string name="secret_11">})()</string>
     <string name="login_url_glau">http://172.16.10.20:1000/login?011abaee7cf9a5fc</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="proceed">Proceed</string>
+    <string name="powered_by">powered by</string>
+    <string name="evening_technologies">Evening Technologies</string>
+    <string name="glau_fireauth_logo">glau_fireauth_logo</string>
+    <string name="linkedin_url">LinkedIn Url</string>
+    <string name="twitter_url">Twitter Url</string>
+    <string name="facebook_url">Facebook Url</string>
+    <string name="instagram_url">Instagram Url</string>
+    <string name="active">Active</string>
+    <string name="status">Status:</string>
+    <string name="inactive">Inactive</string>
+    <string name="toggle_the_service_using_the_switch_above">Toggle the service using the switch above</string>
+    <string name="caution_keep_the_mobile_data_off_while_using_this_app">Caution: Keep the Mobile Data off while using this app!</string>
+    <string name="version">version</string>
+    <string name="general">General</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="view_privacy_policy">View Privacy Policy</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.krnblni.evetech.glaufirewallauthenticator.services;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
@@ -18,7 +19,7 @@ import com.krnblni.evetech.glaufirewallauthenticator.R;
 public class LoginForegroundService extends Service {
 
     String TAG = "Logging - LoginForegroundService ";
-    String loginUrl = getString(R.string.login_url_glau);
+    String loginUrl;
     int foregroundServiceID = 200;
     String notificationChannelIdForHelperService = "1000";
 
@@ -45,18 +46,17 @@ public class LoginForegroundService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.e(TAG, "onStartCommand: " + "service started " + startId);
         sharedPreferences = getSharedPreferences("initial_setup", MODE_PRIVATE);
+        loginUrl = getString(R.string.login_url_glau);
         loginViaWebView();
         return START_STICKY;
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private void loginViaWebView() {
-
         WebView webView = new WebView(getApplicationContext());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(loginUrl);
         webView.setWebViewClient(new WebViewClient() {
-
-            int tries = 0;
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
@@ -70,7 +70,6 @@ public class LoginForegroundService extends Service {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-
                 String username = sharedPreferences.getString("username1", "null");
                 String password = sharedPreferences.getString("password1", "null");
                 view.loadUrl(
