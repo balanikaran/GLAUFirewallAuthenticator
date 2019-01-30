@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/statusTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/active"
         android:textAllCaps="true"
         android:textColor="#64dd17"
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/statusTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         android:text="@string/inactive"
         android:textAllCaps="true"
         android:textColor="#d50000"
@@ -66,12 +66,24 @@
         android:text="@string/toggle_the_service_using_the_switch_above" />
 
     <TextView
+        android:id="@+id/gotoBatterySettingsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switchInfoTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        android:padding="4dp"
+        android:textColor="@color/hyperLinkText"
+        android:text="@string/click_to_open_battery_optimization_settings" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="4dp"
-        android:text="@string/caution_keep_the_mobile_data_off_while_using_this_app"/>
+        android:text="@string/caution_message"
+        android:textAlignment="center" />
 
 
 </RelativeLayout>

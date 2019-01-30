@@ -42,11 +42,20 @@ public class HelperForegroundService extends Service {
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
 
+        //Pending intent for Re-logging into the network (restarting the login foreground service)
+        Intent loginServiceIntent = new Intent(getApplicationContext(), LoginForegroundService.class);
+        int requestCodeReLogin = 999;
+        PendingIntent loginServicePendingIntent = PendingIntent.getService(getApplicationContext(),
+                requestCodeReLogin, loginServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         Notification foregroundServiceNotification = new NotificationCompat.Builder(getApplicationContext(),
                 notificationChannelIdForHelperService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
-                .setContentTitle("Service is up and running ;)")
+                .setContentTitle("Service is up and running 😉")
+                .setContentText("Having trouble? Try logging in again!")
                 .setContentIntent(mainActivityPendingIntent)
+                .addAction(R.drawable.ic_relogin, "Re-Login", loginServicePendingIntent)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.notification_info_text)))
                 .build();
 
         startForeground(foregroundServiceID, foregroundServiceNotification);

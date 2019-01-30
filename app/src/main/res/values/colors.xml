@@ -11,4 +11,5 @@
     <color name="black">#000000</color>
     <color name="accent">#536dfe</color>
     <color name="bottomNavigationColor">#536dfe</color>
+    <color name="hyperLinkText">#303F9F</color>
 </resources>

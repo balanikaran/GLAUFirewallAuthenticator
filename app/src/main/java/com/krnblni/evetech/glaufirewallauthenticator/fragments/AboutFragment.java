@@ -16,7 +16,7 @@ import com.krnblni.evetech.glaufirewallauthenticator.R;
 
 public class AboutFragment extends Fragment {
 
-    ImageView linkedInLinkImageView, twitterLinkImageView, facebookLinkImageView, instagramLinkImageView;
+    ImageView linkedInLinkImageView, facebookLinkImageView, githubLinkImageView;
 
     @Nullable
     @Override
@@ -29,37 +29,26 @@ public class AboutFragment extends Fragment {
                 openLinkedInId();
             }
         });
-        twitterLinkImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openTwitterId();
-            }
-        });
         facebookLinkImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFacebookId();
             }
         });
-        instagramLinkImageView.setOnClickListener(new View.OnClickListener() {
+        githubLinkImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openInstagramId();
+                openGithubId();
             }
         });
         return view;
     }
 
-    private void openInstagramId() {
-        Uri uri = Uri.parse("http://instagram.com/_u/" + "krnblni");
-        Intent instagramIntent = new Intent(Intent.ACTION_VIEW, uri);
-        instagramIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-        instagramIntent.setPackage("com.instagram.android");
-        try {
-            startActivity(instagramIntent);
-        }catch (ActivityNotFoundException e){
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://instagram.com/" + "krnblni")));
-        }
+    private void openGithubId() {
+        Uri uri = Uri.parse("https://www.github.com/krnblni");
+        Intent githubIntent = new Intent(Intent.ACTION_VIEW, uri);
+        githubIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        startActivity(githubIntent);
     }
 
     private void openFacebookId() {
@@ -70,17 +59,6 @@ public class AboutFragment extends Fragment {
             startActivity(facebookIntent);
         } catch (ActivityNotFoundException e) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + "krnblni")));
-        }
-    }
-
-    private void openTwitterId() {
-        Uri uri = Uri.parse("twitter://user?screen_name=" + "krnblni");
-        Intent twitterIntent = new Intent(Intent.ACTION_VIEW, uri);
-        twitterIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-        try {
-            startActivity(twitterIntent);
-        } catch (ActivityNotFoundException e) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/#!/" + "krnblni")));
         }
     }
 
@@ -97,8 +75,7 @@ public class AboutFragment extends Fragment {
 
     private void findAllIds(View view) {
         linkedInLinkImageView = view.findViewById(R.id.linkedInLinkImageView);
-        twitterLinkImageView = view.findViewById(R.id.twitterLinkImageView);
         facebookLinkImageView = view.findViewById(R.id.facebookLinkImageView);
-        instagramLinkImageView = view.findViewById(R.id.instagramLinkImageView);
+        githubLinkImageView = view.findViewById(R.id.githubLinkImageView);
     }
 }

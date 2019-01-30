@@ -15,7 +15,7 @@
     <string name="profile_1">Profile 1</string>
     <string name="profile_2">Profile 2</string>
     <string name="profile_3">Profile 3</string>
-    <string name="about_app_desc">GLAU FireAuth lets you enjoy continuous internet connectivity without any furthur need to authenticate on Fortinet repeatedly.</string>
+    <string name="about_app_desc">GLAU FireAuth lets you enjoy continuous internet connectivity without any further need to authenticate on Fortinet repeatedly.</string>
     <string name="dev_by">Developed by:- <b>Karan Balani</b></string>
     <string name="let_s_get_social_with_the_dev">Let\'s get social with the dev ;)</string>
     <string name="coded_with_for_glau">Coded with 🔥 + 🧠 for GLAU</string>
@@ -23,7 +23,7 @@
     <string name="rate_the_app_on_play_store">Rate the app on Play Store</string>
     <string name="having_problems">Having Problems?</string>
     <string name="service_getting_killed_randomly">Service getting killed randomly?</string>
-    <string name="service_killed_help_desc">Some of the devices might not allow the service to run all the time due to background computation restrictions by manufacturers, for instance you may white list the app from <b>Settings > Battery > Battery Optimisation > \'Don\'t Optimise this app\'</b>  \n\n  OR  \n\nMI users may whitelist the app from <b>Security App > Permissions > AutoStart > \'Allow this app\'</b> \n\n\n*Look for similar settings, varies with device!* \n\n\n<b>THIS APP IS IN BETA PHASE, MIGHT CRASH AT RANDOM OCCASIONS, ALL CRASHES ARE BEING ADDED TO LOG FOR FURTHER RECTIFICATION.</b></string>
+    <string name="service_killed_help_desc">Some of the devices might not allow the service to run all the time due to background computation restrictions by manufacturers, for instance you may white list the app from <b>Settings > Battery > Battery Optimization > \'Don\'t Optimize this app\'</b> \n\n OR\n</string>
     <string name="invalid_name">Invalid Name</string>
     <string name="this_cannot_be_empty">This cannot be empty</string>
     <string name="secret_1">javascript:(function() {</string>
@@ -52,10 +52,14 @@
     <string name="active">Active</string>
     <string name="status">Status:</string>
     <string name="inactive">Inactive</string>
-    <string name="toggle_the_service_using_the_switch_above">Toggle the service using the switch above</string>
-    <string name="caution_keep_the_mobile_data_off_while_using_this_app">Caution: Keep the Mobile Data off while using this app!</string>
+    <string name="toggle_the_service_using_the_switch_above">Toggle the service using the switch above.</string>
+    <string name="caution_message"><b>Please note</b>\n• Keep the Mobile Data off while using this app!\n• Turn off Battery Optimization for this App!</string>
     <string name="version">version</string>
     <string name="general">General</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="view_privacy_policy">View Privacy Policy</string>
+    <string name="github_url">GitHub Url</string>
+    <string name="notification_info_text">• Having trouble? Try logging in again!\n• Keep the mobile data off!\n• Turn off Battery Optimization for this app!\n• Please read the troubleshooting section for more help!</string>
+    <string name="click_to_open_battery_optimization_settings">CLICK TO OPEN BATTERY OPTIMIZATION SETTINGS</string>
+    <string name="click_here_to_find_out_how_to_turn_off_battery_optimization_on_your_device">Click here to find out, \'How to Turn off Battery Optimization on your device\'.</string>
 </resources>

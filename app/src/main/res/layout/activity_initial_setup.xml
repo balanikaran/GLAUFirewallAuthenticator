@@ -67,6 +67,7 @@
                     android:id="@+id/initialSetupNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="true"
                     android:hint="@string/name"
                     android:inputType="textCapWords|textNoSuggestions"
                     android:lines="1"
@@ -94,6 +95,7 @@
                 <EditText
                     android:id="@+id/initialSetupUserName1EditText"
                     android:layout_width="match_parent"
+                    android:autofillHints="true"
                     android:layout_height="wrap_content"
                     android:hint="@string/username"
                     android:inputType="text|textVisiblePassword"
@@ -108,11 +110,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
+                app:passwordToggleEnabled="true"
                 android:layout_marginStart="8dp">
 
                 <EditText
                     android:id="@+id/initialSetupPassword1EditText"
                     android:layout_width="match_parent"
+                    android:autofillHints="true"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
                     android:inputType="numberPassword"

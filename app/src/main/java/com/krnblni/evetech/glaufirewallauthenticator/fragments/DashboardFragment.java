@@ -4,7 +4,9 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
 import com.firebase.jobdispatcher.GooglePlayDriver;
@@ -27,7 +30,7 @@ public class DashboardFragment extends Fragment {
     String TAG = "Logging - DashboardFragment ";
 
     IconSwitch serviceIconSwitch;
-    TextView statusInfoActiveTextView, statusInfoInactiveTextView;
+    TextView statusInfoActiveTextView, statusInfoInactiveTextView, gotoBatterySettingsTextView;
 
     Context context;
 
@@ -38,6 +41,7 @@ public class DashboardFragment extends Fragment {
 
     Intent helperForegroundServiceIntent;
     Intent loginForegroundServiceIntent;
+    Intent batterySettingsIntent;
 
     @Override
     public void onAttach(Context context) {
@@ -61,6 +65,21 @@ public class DashboardFragment extends Fragment {
         serviceIconSwitch = view.findViewById(R.id.serviceIconSwitch);
         statusInfoActiveTextView = view.findViewById(R.id.statusInfoActiveTextView);
         statusInfoInactiveTextView = view.findViewById(R.id.statusInfoInactiveTextView);
+        gotoBatterySettingsTextView = view.findViewById(R.id.gotoBatterySettingsTextView);
+
+        //Adding intent to Battery Settings
+        batterySettingsIntent = new Intent();
+        gotoBatterySettingsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    batterySettingsIntent.setAction(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+                    context.startActivity(batterySettingsIntent);
+                }else{
+                    Toast.makeText(context, "Requires Android M and above!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         if (isHelperServiceRunning()) {
             editor = sharedPreferences.edit();
