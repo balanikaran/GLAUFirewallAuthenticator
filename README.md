@@ -26,7 +26,8 @@ Just install, complete One-time setup, and you are good to go. ✌️
  - Lovely Medium Articles
  - Stack Overflow
 
-#### Anything else that seems useful
+## Privacy Policy
+[Here](https://www.freeprivacypolicy.com/privacy/view/7e565d8445e144f227709d97a645fee6)
 
 ## License
 GPLv3 (General Public License 3.0) 
