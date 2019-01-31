@@ -21,9 +21,6 @@ Provide step by step series of examples and explanations about how to get a deve
 ## How to use?
 Just install, complete One-time setup, and you are good to go. ✌️
 
-## Contribute
-Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus.
-
 ## Credits
  - Android Official Documentaion
  - Lovely Medium Articles
