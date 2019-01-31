@@ -63,4 +63,5 @@
     <string name="click_to_open_battery_optimization_settings">CLICK TO OPEN BATTERY OPTIMIZATION SETTINGS</string>
     <string name="click_here_to_find_out_how_to_turn_off_battery_optimization_on_your_device">Click here to find out, \'How to Turn off Battery Optimization on your device\'.</string>
     <string name="github_repository_link">GitHub Repository Link</string>
+    <string name="source_code">Source code</string>
 </resources>
