@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,7 +38,8 @@ public class SettingsFragment extends Fragment {
 
     TextView settingsNameTextView, settingsProfile1TextView, settingsVersionTextView;
     LinearLayout settingsNameLinearLayout, settingsProfile1LinearLayout,
-            settingsHavingProblemsLinearLayout, settingsRateOnGooglePlayLinearLayout, settingsViewPrivacyPolicyLinearLayout;
+            settingsHavingProblemsLinearLayout, settingsRateOnGooglePlayLinearLayout, settingsViewPrivacyPolicyLinearLayout,
+            settingsGithubRepoLinkLinearLayout;
     Context context;
     SharedPreferences sharedPreferences;
 
@@ -93,7 +95,20 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        settingsGithubRepoLinkLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGithubRepository();
+            }
+        });
+
         return view;
+    }
+
+    private void openGithubRepository() {
+        Uri uri = Uri.parse("https://github.com/krnblni/GLAUFirewallAuthenticator");
+        Intent githubRepoIntent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(githubRepoIntent);
     }
 
     private void openPrivacyPolicyWebPage() {
@@ -274,5 +289,7 @@ public class SettingsFragment extends Fragment {
         settingsHavingProblemsLinearLayout = view.findViewById(R.id.settingsHavingProblemsLinearLayout);
         settingsRateOnGooglePlayLinearLayout = view.findViewById(R.id.settingsRateOnGooglePlayLinearLayout);
         settingsViewPrivacyPolicyLinearLayout = view.findViewById(R.id.settingsViewPrivacyPolicyLinearLayout);
+
+        settingsGithubRepoLinkLinearLayout = view.findViewById(R.id.settingsGithubRepoLinkLinearLayout);
     }
 }

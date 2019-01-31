@@ -108,8 +108,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_relogin" />
-                            <entry key="sourceFile" value="$USER_HOME$/Downloads/Github-595b40b75ba036ed117d609e.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_github_batch" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/GitHub-Logos/GitHub_Logo.psd" />
                           </map>
                         </option>
                       </PersistentState>
