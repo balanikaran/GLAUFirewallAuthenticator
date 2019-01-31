@@ -32,4 +32,4 @@ Let people know how they can contribute into your project. A [contributing guide
 ## License
 GPLv3 (General Public License 3.0) 
 
-MIT © [Karan Balani]()
+GPL © [Karan Balani]()
