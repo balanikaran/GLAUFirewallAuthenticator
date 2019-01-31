@@ -73,7 +73,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    batterySettingsIntent.setAction(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+                    batterySettingsIntent.setAction(Intent.ACTION_POWER_USAGE_SUMMARY);
                     context.startActivity(batterySettingsIntent);
                 }else{
                     Toast.makeText(context, "Requires Android M and above!", Toast.LENGTH_SHORT).show();
