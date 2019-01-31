@@ -30,6 +30,6 @@ Let people know how they can contribute into your project. A [contributing guide
 #### Anything else that seems useful
 
 ## License
-A short snippet describing the license (MIT, Apache etc)
+GPLv3 (General Public License 3.0) 
 
 MIT © [Karan Balani]()
