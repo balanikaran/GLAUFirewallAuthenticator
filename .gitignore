@@ -57,3 +57,6 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 lint/reports/
+
+# Removing BFG Reports
+/..bfg-report/
