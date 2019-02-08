@@ -60,7 +60,7 @@
     <string name="view_privacy_policy">View Privacy Policy</string>
     <string name="github_url">GitHub Url</string>
     <string name="notification_info_text">• Having trouble? Try logging in again!\n• Keep the mobile data off!\n• Turn off Battery Optimization for this app!\n• Please read the troubleshooting section for more help!</string>
-    <string name="click_to_open_battery_optimization_settings">CLICK TO OPEN BATTERY OPTIMIZATION SETTINGS</string>
+    <string name="click_to_open_battery_optimization_settings">CLICK TO OPEN POWER SETTINGS</string>
     <string name="click_here_to_find_out_how_to_turn_off_battery_optimization_on_your_device">Click here to find out, \'How to Turn off Battery Optimization on your device\'.</string>
     <string name="github_repository_link">GitHub Repository Link</string>
     <string name="source_code">Source code</string>
