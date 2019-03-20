@@ -15,9 +15,6 @@ The network firewall only allows the Internet access for 600 seconds (keeps chan
  - Battery friendly
  - One-time setup hustle
 
-## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
-
 ## How to use?
 Just install, complete One-time setup, and you are good to go. ✌️
 
