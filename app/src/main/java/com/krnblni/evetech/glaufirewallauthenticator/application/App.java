@@ -21,7 +21,7 @@ public class App extends Application {
             NotificationChannel notificationChannelForHelperService = new NotificationChannel(
                     notificationChannelIdForHelperService,
                     notificationChannelNameForHelperService,
-                    NotificationManager.IMPORTANCE_DEFAULT
+                    NotificationManager.IMPORTANCE_MIN
             );
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);

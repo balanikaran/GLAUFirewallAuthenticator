@@ -16,12 +16,12 @@ public class LoginInitiatorJobService extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters job) {
-        Log.e(TAG, "onStartJob: " + "called" );
-        if(isHelperServiceRunning()){
+        Log.e(TAG, "onStartJob: " + "called");
+        if (isHelperServiceRunning()) {
             Intent loginForegroundServiceIntent = new Intent(getApplicationContext(), LoginForegroundService.class);
             getApplicationContext().startService(loginForegroundServiceIntent);
-        }else {
-            Log.e(TAG, "onStartJob: " + "helper service not running, job cancelled" );
+        } else {
+            Log.e(TAG, "onStartJob: " + "helper service not running, job cancelled");
             FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(getApplicationContext()));
             firebaseJobDispatcher.cancel(job.getTag());
         }
@@ -30,7 +30,7 @@ public class LoginInitiatorJobService extends JobService {
 
     @Override
     public boolean onStopJob(com.firebase.jobdispatcher.JobParameters job) {
-        Log.e(TAG, "onStopJob: " + "called" );
+        Log.e(TAG, "onStopJob: " + "called");
         return false;
     }
 

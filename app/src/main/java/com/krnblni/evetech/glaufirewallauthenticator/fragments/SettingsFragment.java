@@ -11,18 +11,17 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,12 +35,12 @@ import java.util.regex.Pattern;
 
 public class SettingsFragment extends Fragment {
 
-    TextView settingsNameTextView, settingsProfile1TextView, settingsVersionTextView;
-    LinearLayout settingsNameLinearLayout, settingsProfile1LinearLayout,
+    private TextView settingsNameTextView, settingsProfile1TextView, settingsVersionTextView;
+    private LinearLayout settingsNameLinearLayout, settingsProfile1LinearLayout,
             settingsHavingProblemsLinearLayout, settingsRateOnGooglePlayLinearLayout, settingsViewPrivacyPolicyLinearLayout,
             settingsGithubRepoLinkLinearLayout;
-    Context context;
-    SharedPreferences sharedPreferences;
+    private Context context;
+    private SharedPreferences sharedPreferences;
 
     @Override
     public void onAttach(Context context) {

@@ -7,7 +7,7 @@
     android:background="#ffffff"
     tools:context=".activities.InitialSetupActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/initialSetupToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
 
         </FrameLayout>
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:id="@+id/initialSetupScrollView"
@@ -55,7 +55,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/initialSetupTextInputLayoutName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                     android:lines="1"
                     android:maxLines="1" />
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/initialSetupTextInputLayoutUserName1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,9 +102,9 @@
                     android:lines="1"
                     android:maxLines="1" />
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/initialSetupTextInputLayoutPassword1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,11 +119,11 @@
                     android:autofillHints="true"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
-                    android:inputType="numberPassword"
+                    android:inputType="textPassword"
                     android:lines="1"
                     android:maxLines="1" />
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 

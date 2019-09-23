@@ -34,6 +34,7 @@ public class WifiConnectionStateReceiver extends BroadcastReceiver {
             NetworkInfo networkInfo =
                     intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
 
+            assert networkInfo != null;
             if (networkInfo.isConnected()) {
                 Log.e(TAG, "onReceive: " + "connected");
                 context.stopService(loginForegroundServiceIntent);

@@ -12,13 +12,11 @@
     <string name="profile_preferences">Profile Preferences</string>
     <string name="personal_info">Personal Info</string>
     <string name="name">Name</string>
-    <string name="profile_1">Profile 1</string>
-    <string name="profile_2">Profile 2</string>
-    <string name="profile_3">Profile 3</string>
+    <string name="profile_1">Fortinet Profile Details</string>
     <string name="about_app_desc">GLAU FireAuth lets you enjoy continuous internet connectivity without any further need to authenticate on Fortinet repeatedly.</string>
     <string name="dev_by">Developed by:- <b>Karan Balani</b></string>
     <string name="let_s_get_social_with_the_dev">Let\'s get social with the dev ;)</string>
-    <string name="coded_with_for_glau">Coded with 🔥 + 🧠 for GLAU</string>
+    <string name="coded_with_for_glau">Coded with 🔥, 🧠 &amp; ❤️ for GLAU</string>
     <string name="troubleshooting">Troubleshooting</string>
     <string name="rate_the_app_on_play_store">Rate the app on Play Store</string>
     <string name="having_problems">Having Problems?</string>
@@ -26,17 +24,6 @@
     <string name="service_killed_help_desc">Some of the devices might not allow the service to run all the time due to background computation restrictions by manufacturers, for instance you may white list the app from <b>Settings > Battery > Battery Optimization > \'Don\'t Optimize this app\'</b> \n\n OR\n</string>
     <string name="invalid_name">Invalid Name</string>
     <string name="this_cannot_be_empty">This cannot be empty</string>
-    <string name="secret_1">javascript:(function() {</string>
-    <string name="secret_2">var form = document.forms[0];</string>
-    <string name="secret_3">var usr = form.elements[3];</string>
-    <string name="secret_4">var pass = form.elements[4];</string>
-    <string name="secret_5">var con = form.elements[5];</string>
-    <string name="secret_6">usr.value = \'</string>
-    <string name="secret_7">\' ;</string>
-    <string name="secret_8">pass.value = \'</string>
-    <string name="secret_9">\' ;</string>
-    <string name="secret_10">con.click();</string>
-    <string name="secret_11">})()</string>
     <string name="login_url_glau">http://172.16.10.20:1000/login?011abaee7cf9a5fc</string>
     <string name="personal_information">Personal Information</string>
     <string name="username">Username</string>

@@ -6,8 +6,8 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -72,21 +72,6 @@ public class LoginForegroundService extends Service {
             public void onPageFinished(WebView view, String url) {
                 String username = sharedPreferences.getString("username1", "null");
                 String password = sharedPreferences.getString("password1", "null");
-//                view.loadUrl(
-//                        getString(R.string.secret_1)
-//                                + getString(R.string.secret_2)
-//                                + getString(R.string.secret_3)
-//                                + getString(R.string.secret_4)
-//                                + getString(R.string.secret_5)
-//                                + getString(R.string.secret_6)
-//                                + username
-//                                + getString(R.string.secret_7)
-//                                + getString(R.string.secret_8)
-//                                + password
-//                                + getString(R.string.secret_9)
-//                                + getString(R.string.secret_10)
-//                                + getString(R.string.secret_11)
-//                );
 
                 view.loadUrl("javascript:( function() { var user = document.getElementById('ft_un'); user.value = '" +
                         username +

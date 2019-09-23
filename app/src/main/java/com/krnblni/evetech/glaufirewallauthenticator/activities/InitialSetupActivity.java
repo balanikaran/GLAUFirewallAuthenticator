@@ -3,8 +3,8 @@ package com.krnblni.evetech.glaufirewallauthenticator.activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +15,8 @@ import com.krnblni.evetech.glaufirewallauthenticator.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class InitialSetupActivity extends AppCompatActivity {
 
