@@ -37,7 +37,18 @@
         android:layout_width="match_parent"
         android:layout_below="@id/toolbar"
         android:layout_height="match_parent"
-        android:layout_above="@id/navigation" />
+        android:layout_above="@id/bannerAdView" />
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bannerAdView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/navigation"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-2369194065944897/5304161369">
+    </com.google.android.gms.ads.AdView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"

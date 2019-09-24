@@ -18,6 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Custom"
         tools:targetApi="m">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2369194065944897~3644623004"/>
+
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation"
