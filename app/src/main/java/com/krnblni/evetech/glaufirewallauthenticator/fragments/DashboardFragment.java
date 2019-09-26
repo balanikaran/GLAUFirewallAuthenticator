@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.core.content.ContextCompat;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,7 @@ public class DashboardFragment extends Fragment {
     private Intent batterySettingsIntent;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         Log.e(TAG, "onAttach: " + "called");
         this.context = context;
         super.onAttach(context);
@@ -75,7 +76,7 @@ public class DashboardFragment extends Fragment {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     batterySettingsIntent.setAction(Intent.ACTION_POWER_USAGE_SUMMARY);
                     context.startActivity(batterySettingsIntent);
-                }else{
+                } else {
                     Toast.makeText(context, "Requires Android M and above!", Toast.LENGTH_SHORT).show();
                 }
             }

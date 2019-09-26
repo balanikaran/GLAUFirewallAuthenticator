@@ -1,12 +1,13 @@
 package com.krnblni.evetech.glaufirewallauthenticator.activities;
 
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -75,12 +76,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeMobileAdsLoadAndShow() {
-        Log.e(TAG, "initializeMobileAdsLoadAndShow: " + "the ad was loaded." );
-        MobileAds.initialize(this, "ca-app-pub-2369194065944897~3644623004");
+        Log.e(TAG, "initializeMobileAdsLoadAndShow: " + "the ad was loaded.");
         bannerAdView = findViewById(R.id.bannerAdView);
         AdRequest bannerAdRequest = new AdRequest.Builder().build();
         bannerAdView.loadAd(bannerAdRequest);
-        Log.e(TAG, "initializeMobileAdsLoadAndShow: " + "the ad was loaded" );
+        Log.e(TAG, "initializeMobileAdsLoadAndShow: " + "the ad was loaded");
     }
 
     boolean inflateRespectedFragmentPage(Fragment fragment) {

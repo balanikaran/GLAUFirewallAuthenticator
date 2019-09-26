@@ -55,9 +55,9 @@ public class WifiConnectionStateReceiver extends BroadcastReceiver {
             } else if (!networkInfo.isConnected()) {
                 Log.e(TAG, "onReceive: " + "disconnected");
                 context.stopService(loginForegroundServiceIntent);
-                try{
+                try {
                     firebaseJobDispatcher.cancel("reInitiateLoginJobServiceTag");
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
