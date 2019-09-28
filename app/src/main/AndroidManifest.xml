@@ -14,7 +14,9 @@
         android:theme="@style/AppTheme.Custom"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activities.InterstitialAdActivity"></activity>
+        <activity
+            android:name=".activities.InterstitialAdActivity"
+            android:excludeFromRecents="true" />
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation"
