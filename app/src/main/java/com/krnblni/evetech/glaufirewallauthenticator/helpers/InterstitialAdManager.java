@@ -3,6 +3,8 @@ package com.krnblni.evetech.glaufirewallauthenticator.helpers;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -14,6 +16,8 @@ import com.krnblni.evetech.glaufirewallauthenticator.R;
 import com.krnblni.evetech.glaufirewallauthenticator.activities.InterstitialAdActivity;
 
 public class InterstitialAdManager {
+
+    private String TAG = "Logging - InterstitialAdManager";
 
     private static InterstitialAd interstitialAd;
 
@@ -38,10 +42,23 @@ public class InterstitialAdManager {
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
                 notificationManager.notify(450, builder.build());
             }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.e(TAG, "onAdFailedToLoad: " + "code = " + i );
+            }
+
+
         });
     }
 
-    public InterstitialAd getAd() {
+    public InterstitialAd getAd(Context context) {
+        Log.e(TAG, "getAd: " + "was called" );
+        if (interstitialAd == null){
+            Toast.makeText(context, "Ad is null!", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "getAd: " + "ad is null" );
+        }
         return interstitialAd;
     }
 }

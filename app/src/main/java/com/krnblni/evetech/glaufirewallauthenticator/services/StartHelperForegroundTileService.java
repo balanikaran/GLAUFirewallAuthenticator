@@ -74,9 +74,6 @@ public class StartHelperForegroundTileService extends TileService {
                 glauFireAuthTile.setState(Tile.STATE_ACTIVE);
                 glauFireAuthTile.updateTile();
 
-                InterstitialAdManager interstitialAdManager = new InterstitialAdManager();
-                interstitialAdManager.createAndLoadAd(getApplicationContext());
-
             } else {
                 Toast.makeText(this, "Complete the initial setup first!", Toast.LENGTH_SHORT).show();
             }

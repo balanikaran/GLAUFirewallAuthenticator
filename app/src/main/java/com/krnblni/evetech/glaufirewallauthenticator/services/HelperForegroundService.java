@@ -15,6 +15,7 @@ import android.util.Log;
 
 import com.krnblni.evetech.glaufirewallauthenticator.R;
 import com.krnblni.evetech.glaufirewallauthenticator.activities.MainActivity;
+import com.krnblni.evetech.glaufirewallauthenticator.helpers.InterstitialAdManager;
 import com.krnblni.evetech.glaufirewallauthenticator.receivers.WifiConnectionStateReceiver;
 
 public class HelperForegroundService extends Service {
@@ -48,7 +49,6 @@ public class HelperForegroundService extends Service {
                 notificationChannelIdForHelperService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
                 .setContentTitle("Service is up and running 😉")
-                .setContentText("Having trouble? Try logging in again!")
                 .setContentIntent(mainActivityPendingIntent)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.notification_info_text)))
                 .build();
@@ -63,6 +63,9 @@ public class HelperForegroundService extends Service {
 
         IntentFilter intentFilter = new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         registerReceiver(wifiConnectionStateReceiver, intentFilter);
+
+//        InterstitialAdManager interstitialAdManager = new InterstitialAdManager();
+//        interstitialAdManager.createAndLoadAd(getApplicationContext());
 
         return START_STICKY;
     }
