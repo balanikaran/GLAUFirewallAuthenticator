@@ -92,17 +92,17 @@ public class LoginForegroundService extends Service {
                         view.evaluateJavascript("(function(){ return document.body.innerHTML; })()", new ValueCallback<String>() {
                             @Override
                             public void onReceiveValue(String htmlDocumentString) {
-                                if (htmlDocumentString != null){
-                                    if (htmlDocumentString.toLowerCase().contains("Keepalive".toLowerCase())){
+                                if (htmlDocumentString != null) {
+                                    if (htmlDocumentString.toLowerCase().contains("Keepalive".toLowerCase())) {
                                         Log.e(TAG, "onReceiveValue: Keep Alive");
                                         updateNotification("Login Successful! ✅");
-                                    }else if (htmlDocumentString.toLowerCase().contains("over limit".toLowerCase())){
+                                    } else if (htmlDocumentString.toLowerCase().contains("over limit".toLowerCase())) {
                                         Log.e(TAG, "onReceiveValue: Over Limit");
                                         updateNotification("Over Limit! ⚠️");
-                                    }else if (htmlDocumentString.toLowerCase().contains("Authentication Failed".toLowerCase())){
+                                    } else if (htmlDocumentString.toLowerCase().contains("Authentication Failed".toLowerCase())) {
                                         Log.e(TAG, "onReceiveValue: Authentication Failed");
                                         updateNotification("Login Failed! ❌");
-                                    }else {
+                                    } else {
                                         Log.e(TAG, "onReceiveValue: Unknown");
                                     }
                                 }
