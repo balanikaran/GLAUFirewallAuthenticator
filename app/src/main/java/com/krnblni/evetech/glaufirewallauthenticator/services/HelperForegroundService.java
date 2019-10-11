@@ -48,8 +48,12 @@ public class HelperForegroundService extends Service {
                 notificationChannelIdForHelperService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
                 .setContentTitle("Service is up and running 😉")
+                .setContentText("Status: Awaiting Update")
                 .setContentIntent(mainActivityPendingIntent)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.notification_info_text)))
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .setBigContentTitle("Status: Awaiting Update")
+                        .bigText(getString(R.string.notification_info_text))
+                )
                 .build();
 
         startForeground(foregroundServiceID, foregroundServiceNotification);

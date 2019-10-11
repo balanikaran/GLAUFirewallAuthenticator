@@ -46,7 +46,7 @@ public class WifiConnectionStateReceiver extends BroadcastReceiver {
 //                OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(AdLoadAndShowWorker.class).setInitialDelay(10, TimeUnit.SECONDS).build();
 //                WorkManager.getInstance(context).enqueue(oneTimeWorkRequest);
 
-                PeriodicWorkRequest periodicAdWork = new PeriodicWorkRequest.Builder(AdLoadAndShowWorker.class, 15, TimeUnit.MINUTES, 5, TimeUnit.MINUTES).build();
+                PeriodicWorkRequest periodicAdWork = new PeriodicWorkRequest.Builder(AdLoadAndShowWorker.class, 1, TimeUnit.HOURS, 10, TimeUnit.MINUTES).build();
                 WorkManager.getInstance(context).enqueueUniquePeriodicWork("periodicAdWorkName", ExistingPeriodicWorkPolicy.KEEP, periodicAdWork);
 
             } else if (!networkInfo.isConnected()) {

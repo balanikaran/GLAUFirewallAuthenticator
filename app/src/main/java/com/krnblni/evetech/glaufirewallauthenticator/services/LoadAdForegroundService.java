@@ -22,7 +22,7 @@ public class LoadAdForegroundService extends Service {
 
     String TAG = "Logging - LoadAdForegroundService";
     int foregroundServiceID = 250;
-    String notificationChannelIdForHelperService = "1000";
+    String notificationChannelIdForAdsAndService = "2000";
     private InterstitialAd interstitialAd;
 
     @Nullable
@@ -35,9 +35,10 @@ public class LoadAdForegroundService extends Service {
     public void onCreate() {
         Log.e(TAG, "onCreate: " + "called");
         Notification foregroundServiceNotification = new NotificationCompat.Builder(getApplicationContext(),
-                notificationChannelIdForHelperService)
+                notificationChannelIdForAdsAndService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
-                .setContentTitle("Loading online contents...")
+                .setContentTitle("GLAU FireAuth")
+                .setContentText("loading online contents...")
                 .build();
         startForeground(foregroundServiceID, foregroundServiceNotification);
     }
@@ -65,9 +66,10 @@ public class LoadAdForegroundService extends Service {
 
                 Intent interstitialAdActivityIntent = new Intent(getApplicationContext(), InterstitialAdActivity.class);
                 PendingIntent interstitialAdActivityPendingIntent = PendingIntent.getActivity(getApplicationContext(), 500, interstitialAdActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "1000")
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), notificationChannelIdForAdsAndService)
                         .setSmallIcon(R.drawable.web_hi_res_512)
                         .setContentTitle("Show your appreciation!")
+                        .setContentText("This is to support the development of the app.")
                         .setOngoing(true)
                         .setContentIntent(interstitialAdActivityPendingIntent)
                         .setAutoCancel(true);

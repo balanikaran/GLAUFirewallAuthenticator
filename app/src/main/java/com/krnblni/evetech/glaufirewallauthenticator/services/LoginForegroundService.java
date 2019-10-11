@@ -131,14 +131,20 @@ public class LoginForegroundService extends Service {
                 mainActivityIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
+
+        if (notificationMessage == null || notificationMessage.equals("")) {
+            notificationMessage = "Unknown";
+        }
         Notification foregroundServiceNotification = new NotificationCompat.Builder(getApplicationContext(),
                 notificationChannelIdForHelperService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
                 .setContentTitle("Service is up and running 😉")
                 .setContentText("Status: " + notificationMessage)
                 .setContentIntent(mainActivityPendingIntent)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.notification_info_text)))
-                .build();
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .setBigContentTitle("Status: " + notificationMessage)
+                        .bigText(getString(R.string.notification_info_text))
+                ).build();
         NotificationManagerCompat.from(getApplicationContext()).notify(helperForegroundServiceID, foregroundServiceNotification);
     }
 }
