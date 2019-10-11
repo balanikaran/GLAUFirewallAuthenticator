@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.krnblni.evetech.glaufirewallauthenticator">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:name=".application.App"
         android:allowBackup="true"
@@ -69,16 +73,10 @@
                 android:value="false" />
         </service>
         <service
-            android:name=".services.LoginInitiatorJobService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-            </intent-filter>
-        </service>
+            android:name=".services.LoadAdForegroundService"
+            android:enabled="true"
+            android:label="Load Online Contents Foreground Service"
+            android:stopWithTask="false" />
     </application>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

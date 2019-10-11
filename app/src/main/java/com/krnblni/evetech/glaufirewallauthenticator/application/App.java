@@ -4,6 +4,8 @@ import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 
+import com.krnblni.evetech.glaufirewallauthenticator.helpers.InterstitialAdManager;
+
 public class App extends Application {
 
     String notificationChannelIdForHelperService = "1000";

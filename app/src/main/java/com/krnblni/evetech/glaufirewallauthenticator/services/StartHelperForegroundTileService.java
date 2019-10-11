@@ -2,26 +2,19 @@ package com.krnblni.evetech.glaufirewallauthenticator.services;
 
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
-
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
-
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
 import com.firebase.jobdispatcher.GooglePlayDriver;
-import com.krnblni.evetech.glaufirewallauthenticator.R;
-import com.krnblni.evetech.glaufirewallauthenticator.helpers.InterstitialAdManager;
 
 @TargetApi(Build.VERSION_CODES.N)
 public class StartHelperForegroundTileService extends TileService {

@@ -19,13 +19,14 @@ public class InterstitialAdActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interstitial_ad);
         Log.e(TAG, "onCreate: " + "activity started" );
-        InterstitialAdManager interstitialAdManager = new InterstitialAdManager();
-        InterstitialAd interstitialAd = interstitialAdManager.getAd(getApplicationContext());
+        InterstitialAdManager interstitialAdManager = InterstitialAdManager.getInstance();
+        InterstitialAd interstitialAd = interstitialAdManager.getInterstitialAd();
         if (interstitialAd == null){
             Log.e(TAG, "onCreate: " + "ad is null" );
+            finish();
         }
 
-        if(interstitialAd.isLoaded()){
+        if(interstitialAd != null && interstitialAd.isLoaded()){
             interstitialAd.show();
             interstitialAd.setAdListener(new AdListener(){
                 @Override

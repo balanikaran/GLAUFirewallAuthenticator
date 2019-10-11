@@ -7,11 +7,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
 import android.os.IBinder;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-
-import android.util.Log;
 
 import com.krnblni.evetech.glaufirewallauthenticator.R;
 import com.krnblni.evetech.glaufirewallauthenticator.activities.MainActivity;
@@ -63,11 +62,13 @@ public class HelperForegroundService extends Service {
 
         IntentFilter intentFilter = new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         registerReceiver(wifiConnectionStateReceiver, intentFilter);
-
-//        InterstitialAdManager interstitialAdManager = new InterstitialAdManager();
-//        interstitialAdManager.createAndLoadAd(getApplicationContext());
+        createSingletonAdManagerObject();
 
         return START_STICKY;
+    }
+
+    private void createSingletonAdManagerObject() {
+        InterstitialAdManager interstitialAdManager = InterstitialAdManager.getInstance();
     }
 
     @Override

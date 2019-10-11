@@ -8,8 +8,8 @@ android {
         applicationId "com.krnblni.evetech.glaufirewallauthenticator"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 11
-        versionName "1.1-stable"
+        versionCode 12
+        versionName "1.2-stable"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -46,6 +46,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.2.0'
 
     implementation 'com.google.firebase:firebase-ads:18.2.0'
+
+    implementation "androidx.work:work-runtime:2.2.0"
 }
 
 apply plugin: 'com.google.gms.google-services'
