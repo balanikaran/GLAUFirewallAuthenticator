@@ -11,11 +11,18 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import com.krnblni.evetech.glaufirewallauthenticator.R;
 import com.krnblni.evetech.glaufirewallauthenticator.activities.MainActivity;
 import com.krnblni.evetech.glaufirewallauthenticator.helpers.InterstitialAdManager;
 import com.krnblni.evetech.glaufirewallauthenticator.receivers.WifiConnectionStateReceiver;
+import com.krnblni.evetech.glaufirewallauthenticator.workers.AdLoadAndShowWorker;
+
+import java.util.concurrent.TimeUnit;
 
 public class HelperForegroundService extends Service {
 
@@ -68,6 +75,12 @@ public class HelperForegroundService extends Service {
         registerReceiver(wifiConnectionStateReceiver, intentFilter);
         createSingletonAdManagerObject();
 
+//        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(AdLoadAndShowWorker.class).setInitialDelay(10, TimeUnit.SECONDS).build();
+//        WorkManager.getInstance(getApplicationContext()).enqueue(oneTimeWorkRequest);
+
+        PeriodicWorkRequest periodicAdWork = new PeriodicWorkRequest.Builder(AdLoadAndShowWorker.class, 1, TimeUnit.HOURS, 20, TimeUnit.MINUTES).addTag("periodicAdsLoadWork").build();
+        WorkManager.getInstance(getApplicationContext()).enqueueUniquePeriodicWork("periodicAdWorkName", ExistingPeriodicWorkPolicy.KEEP, periodicAdWork);
+
         return START_STICKY;
     }
 
@@ -80,6 +93,7 @@ public class HelperForegroundService extends Service {
         super.onDestroy();
         Log.e(TAG, "onDestroy: " + "called");
         try {
+            WorkManager.getInstance(getApplicationContext()).cancelAllWorkByTag("periodicAdsLoadWork");
             unregisterReceiver(wifiConnectionStateReceiver);
         } catch (Exception e) {
             e.printStackTrace();

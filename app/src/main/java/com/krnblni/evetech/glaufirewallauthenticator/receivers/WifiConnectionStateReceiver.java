@@ -40,20 +40,14 @@ public class WifiConnectionStateReceiver extends BroadcastReceiver {
                 context.stopService(loginForegroundServiceIntent);
                 context.startService(loginForegroundServiceIntent);
 
-                PeriodicWorkRequest periodicLoginWork = new PeriodicWorkRequest.Builder(LoginInitiatorWorker.class, 15, TimeUnit.MINUTES, 5, TimeUnit.MINUTES).build();
+                PeriodicWorkRequest periodicLoginWork = new PeriodicWorkRequest.Builder(LoginInitiatorWorker.class, 15, TimeUnit.MINUTES, 5, TimeUnit.MINUTES).addTag("loginInitiatorWork").build();
                 WorkManager.getInstance(context).enqueueUniquePeriodicWork("periodicLoginWorkName", ExistingPeriodicWorkPolicy.KEEP, periodicLoginWork);
-
-//                OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(AdLoadAndShowWorker.class).setInitialDelay(10, TimeUnit.SECONDS).build();
-//                WorkManager.getInstance(context).enqueue(oneTimeWorkRequest);
-
-                PeriodicWorkRequest periodicAdWork = new PeriodicWorkRequest.Builder(AdLoadAndShowWorker.class, 1, TimeUnit.HOURS, 10, TimeUnit.MINUTES).build();
-                WorkManager.getInstance(context).enqueueUniquePeriodicWork("periodicAdWorkName", ExistingPeriodicWorkPolicy.KEEP, periodicAdWork);
 
             } else if (!networkInfo.isConnected()) {
                 Log.e(TAG, "onReceive: " + "disconnected");
                 context.stopService(loginForegroundServiceIntent);
                 try {
-                    WorkManager.getInstance(context).cancelAllWork();
+                    WorkManager.getInstance(context).cancelAllWorkByTag("loginInitiatorWork");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
