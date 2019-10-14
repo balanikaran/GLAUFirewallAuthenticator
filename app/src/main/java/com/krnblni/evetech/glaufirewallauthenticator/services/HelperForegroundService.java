@@ -3,16 +3,22 @@ package com.krnblni.evetech.glaufirewallauthenticator.services;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.LinkProperties;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
 import android.net.wifi.WifiManager;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
@@ -26,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 
 public class HelperForegroundService extends Service {
 
-    String TAG = "Logging - HelperForegroundService: ";
+    String TAG = "Logging - HelperForegroundService ";
     String notificationChannelIdForHelperService = "1000";
     int foregroundServiceID = 100;
 
@@ -57,6 +63,7 @@ public class HelperForegroundService extends Service {
                 .setContentTitle("Service is up and running 😉")
                 .setContentText("Status: Awaiting Update")
                 .setContentIntent(mainActivityPendingIntent)
+                .setGroup("helperServiceGroup")
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .setBigContentTitle("Status: Awaiting Update")
                         .bigText(getString(R.string.notification_info_text))
@@ -73,12 +80,10 @@ public class HelperForegroundService extends Service {
 
         IntentFilter intentFilter = new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         registerReceiver(wifiConnectionStateReceiver, intentFilter);
+
         createSingletonAdManagerObject();
 
-//        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(AdLoadAndShowWorker.class).setInitialDelay(10, TimeUnit.SECONDS).build();
-//        WorkManager.getInstance(getApplicationContext()).enqueue(oneTimeWorkRequest);
-
-        PeriodicWorkRequest periodicAdWork = new PeriodicWorkRequest.Builder(AdLoadAndShowWorker.class, 1, TimeUnit.HOURS, 20, TimeUnit.MINUTES).addTag("periodicAdsLoadWork").build();
+        PeriodicWorkRequest periodicAdWork = new PeriodicWorkRequest.Builder(AdLoadAndShowWorker.class, 1, TimeUnit.HOURS, 20, TimeUnit.MINUTES).build();
         WorkManager.getInstance(getApplicationContext()).enqueueUniquePeriodicWork("periodicAdWorkName", ExistingPeriodicWorkPolicy.KEEP, periodicAdWork);
 
         return START_STICKY;
@@ -92,8 +97,8 @@ public class HelperForegroundService extends Service {
     public void onDestroy() {
         super.onDestroy();
         Log.e(TAG, "onDestroy: " + "called");
+        WorkManager.getInstance(getApplicationContext()).cancelUniqueWork("periodicAdWorkName");
         try {
-            WorkManager.getInstance(getApplicationContext()).cancelAllWorkByTag("periodicAdsLoadWork");
             unregisterReceiver(wifiConnectionStateReceiver);
         } catch (Exception e) {
             e.printStackTrace();

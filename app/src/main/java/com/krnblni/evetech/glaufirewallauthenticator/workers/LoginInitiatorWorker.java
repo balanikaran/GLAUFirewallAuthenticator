@@ -39,6 +39,11 @@ public class LoginInitiatorWorker extends Worker {
         return Result.success();
     }
 
+    @Override
+    public void onStopped() {
+        Log.e(TAG, "onStopped: " + "work was cancelled by tag name" );
+    }
+
     private boolean isHelperServiceRunning() {
         ActivityManager manager = (ActivityManager) getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
         if (manager != null) {

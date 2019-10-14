@@ -38,7 +38,8 @@ public class LoadAdForegroundService extends Service {
                 notificationChannelIdForAdsAndService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
                 .setContentTitle("GLAU FireAuth")
-                .setContentText("loading online contents...")
+                .setContentText("Loading online contents...")
+                .setGroup("adsServiceGroup")
                 .build();
         startForeground(foregroundServiceID, foregroundServiceNotification);
     }
@@ -71,6 +72,7 @@ public class LoadAdForegroundService extends Service {
                         .setContentTitle("Show your appreciation!")
                         .setContentText("This is to support the development of the app.")
                         .setOngoing(true)
+                        .setGroup("adsServiceGroup")
                         .setContentIntent(interstitialAdActivityPendingIntent)
                         .setAutoCancel(true);
 
