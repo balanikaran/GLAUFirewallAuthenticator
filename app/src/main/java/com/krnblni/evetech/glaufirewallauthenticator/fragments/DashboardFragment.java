@@ -6,12 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.core.content.ContextCompat;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +13,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.work.WorkManager;
+
 import com.krnblni.evetech.glaufirewallauthenticator.R;
 import com.krnblni.evetech.glaufirewallauthenticator.services.HelperForegroundService;
 import com.krnblni.evetech.glaufirewallauthenticator.services.LoginForegroundService;
@@ -37,8 +35,6 @@ public class DashboardFragment extends Fragment {
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-
-    private FirebaseJobDispatcher firebaseJobDispatcher;
 
     private Intent helperForegroundServiceIntent;
     private Intent loginForegroundServiceIntent;
@@ -61,7 +57,6 @@ public class DashboardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         sharedPreferences = context.getSharedPreferences("initial_setup", Context.MODE_PRIVATE);
-        firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(context));
 
         serviceIconSwitch = view.findViewById(R.id.serviceIconSwitch);
         statusInfoActiveTextView = view.findViewById(R.id.statusInfoActiveTextView);
@@ -114,7 +109,6 @@ public class DashboardFragment extends Fragment {
                     statusInfoInactiveTextView.setVisibility(View.VISIBLE);
                     context.stopService(helperForegroundServiceIntent);
                     context.stopService(loginForegroundServiceIntent);
-                    firebaseJobDispatcher.cancel("reInitiateLoginJobServiceTag");
                 }
                 editor.apply();
             }

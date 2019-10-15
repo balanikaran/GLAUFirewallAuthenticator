@@ -1,11 +1,8 @@
 package com.krnblni.evetech.glaufirewallauthenticator.application;
 
 import android.app.Application;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-
-import com.krnblni.evetech.glaufirewallauthenticator.helpers.InterstitialAdManager;
 
 public class App extends Application {
 
