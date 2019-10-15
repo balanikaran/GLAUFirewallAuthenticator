@@ -91,6 +91,7 @@ public class HelperForegroundService extends Service {
         super.onDestroy();
         Log.e(TAG, "onDestroy: " + "called");
         WorkManager.getInstance(getApplicationContext()).cancelUniqueWork("periodicAdWorkName");
+        WorkManager.getInstance(getApplicationContext()).cancelUniqueWork("periodicLoginWorkName");
         try {
             unregisterReceiver(wifiConnectionStateReceiver);
         } catch (Exception e) {
