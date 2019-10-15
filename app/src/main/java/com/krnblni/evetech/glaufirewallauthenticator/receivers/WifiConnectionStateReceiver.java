@@ -27,7 +27,7 @@ public class WifiConnectionStateReceiver extends BroadcastReceiver {
     String TAG = "Logging - WifiConnectionStateReceiver ";
     Intent loginForegroundServiceIntent;
 
-    int foregroundServiceID = 200, helperForegroundServiceID = 100;
+    int helperForegroundServiceID = 100;
     String notificationChannelIdForHelperService = "1000";
 
     @Override
@@ -44,6 +44,7 @@ public class WifiConnectionStateReceiver extends BroadcastReceiver {
             assert networkInfo != null;
             if (networkInfo.isConnected()) {
                 Log.e(TAG, "onReceive: " + "connected");
+                updateNotification("Wi-Fi Connected, Awaiting Update", context);
                 context.stopService(loginForegroundServiceIntent);
                 context.startService(loginForegroundServiceIntent);
 
