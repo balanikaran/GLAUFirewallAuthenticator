@@ -56,4 +56,5 @@
     <string name="ad_interstitial_id_1">ca-app-pub-2369194065944897/3328341508</string>
     <string name="ad_interstitial_id_test">ca-app-pub-3940256099942544/1033173712</string>
     <string name="ads_to_be_shown_here">Ads to be shown here! \nIf you can read this, please feel free to close this! :)</string>
+    <string name="admob_app_id">ca-app-pub-2369194065944897~3644623004</string>
 </resources>

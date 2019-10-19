@@ -46,6 +46,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-ads:18.2.0'
 
     implementation "androidx.work:work-runtime:2.2.0"
+
+    implementation 'com.google.android.gms:play-services-ads:18.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
