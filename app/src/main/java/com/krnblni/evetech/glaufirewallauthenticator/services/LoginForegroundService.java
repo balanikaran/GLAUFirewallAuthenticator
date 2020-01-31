@@ -6,18 +6,18 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.os.IBinder;
-
-import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
 import android.util.Log;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.krnblni.evetech.glaufirewallauthenticator.R;
 import com.krnblni.evetech.glaufirewallauthenticator.activities.MainActivity;
@@ -44,6 +44,7 @@ public class LoginForegroundService extends Service {
                 notificationChannelIdForHelperService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
                 .setContentTitle("Login Service")
+                .setGroup("helperServiceGroup")
                 .build();
         startForeground(foregroundServiceID, foregroundServiceNotification);
     }
@@ -87,7 +88,6 @@ public class LoginForegroundService extends Service {
                 view.setWebViewClient(new WebViewClient() {
                     @Override
                     public void onPageFinished(WebView view, String url) {
-                        super.onPageFinished(view, url);
                         Log.e(TAG, "onPageFinished: " + "login done");
                         view.evaluateJavascript("(function(){ return document.body.innerHTML; })()", new ValueCallback<String>() {
                             @Override
@@ -108,13 +108,26 @@ public class LoginForegroundService extends Service {
                                 }
                             }
                         });
-                        view.destroy();
+                        destroyWebViewAfterDelay(view);
                         stopSelf();
                     }
                 });
             }
 
         });
+    }
+
+    private void destroyWebViewAfterDelay(final WebView view) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.e(TAG, "run: " + "webView destroyed" );
+                if (view != null){
+                    view.destroy();
+                }
+            }
+        }, 5000);
     }
 
     @Override
@@ -131,14 +144,21 @@ public class LoginForegroundService extends Service {
                 mainActivityIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
+
+        if (notificationMessage == null || notificationMessage.equals("")) {
+            notificationMessage = "Unknown";
+        }
         Notification foregroundServiceNotification = new NotificationCompat.Builder(getApplicationContext(),
                 notificationChannelIdForHelperService)
                 .setSmallIcon(R.drawable.ic_stat_app_icon_notification)
                 .setContentTitle("Service is up and running 😉")
                 .setContentText("Status: " + notificationMessage)
                 .setContentIntent(mainActivityPendingIntent)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.notification_info_text)))
-                .build();
+                .setGroup("helperServiceGroup")
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .setBigContentTitle("Status: " + notificationMessage)
+                        .bigText(getString(R.string.notification_info_text))
+                ).build();
         NotificationManagerCompat.from(getApplicationContext()).notify(helperForegroundServiceID, foregroundServiceNotification);
     }
 }
