@@ -39,15 +39,15 @@ dependencies {
 
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
 
-    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
 
-    implementation 'com.google.firebase:firebase-core:17.2.0'
+    implementation 'com.google.firebase:firebase-core:17.2.2'
 
-    implementation 'com.google.firebase:firebase-ads:18.2.0'
+    implementation 'com.google.firebase:firebase-ads:18.3.0'
 
-    implementation "androidx.work:work-runtime:2.2.0"
+    implementation "androidx.work:work-runtime:2.3.0"
 
-    implementation 'com.google.android.gms:play-services-ads:18.2.0'
+    implementation 'com.google.android.gms:play-services-ads:18.3.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
