@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/bgColor"
     tools:context=".activities.InitialSetupActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/initialSetupToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="@color/bgColor"
         app:contentInsetStart="0dp">
 
         <FrameLayout
@@ -25,7 +25,7 @@
                 android:layout_gravity="center"
                 android:text="@string/initial_setup"
                 android:textAlignment="center"
-                android:textColor="#CC000000"
+                android:textColor="@color/primary_text"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -52,7 +52,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/personal_information"
                 android:textAllCaps="true"
-                android:textColor="@color/black"
+                android:textColor="@color/primary_text"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -81,7 +81,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/profile_1"
                 android:textAllCaps="true"
-                android:textColor="@color/black"
+                android:textColor="@color/primary_text"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -136,6 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/accent"
         android:text="@string/proceed" />
 
 </RelativeLayout>

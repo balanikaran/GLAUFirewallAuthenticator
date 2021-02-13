@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--Application custom theme colors-->
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#ffffff</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="accent">#536dfe</color>
+    <color name="bottomNavigationColor">#536dfe</color>
+    <color name="hyperLinkText">#556BF6</color>
+
+    <color name="bgColor">#000000</color>
+    <bool name="isNotNight">false</bool>
+</resources>
