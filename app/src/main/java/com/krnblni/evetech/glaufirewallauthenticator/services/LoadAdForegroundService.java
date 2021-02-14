@@ -7,13 +7,16 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.krnblni.evetech.glaufirewallauthenticator.R;
 import com.krnblni.evetech.glaufirewallauthenticator.activities.InterstitialAdActivity;
 import com.krnblni.evetech.glaufirewallauthenticator.helpers.InterstitialAdManager;
@@ -52,44 +55,45 @@ public class LoadAdForegroundService extends Service {
     }
 
     private void loadAd() {
-        interstitialAd = new InterstitialAd(getApplicationContext());
-        interstitialAd.setAdUnitId(getApplicationContext().getString(R.string.ad_interstitial_id_1));
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        interstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                Log.e(TAG, "onAdLoaded: " + "ad loaded");
+        InterstitialAd.load(getApplicationContext(),
+                getApplicationContext().getString(R.string.ad_interstitial_id_1),
+                adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd loadedInterstitialAd) {
+                        super.onAdLoaded(loadedInterstitialAd);
+                        Log.e(TAG, "onAdLoaded: " + "ad loaded");
 
-                InterstitialAdManager interstitialAdManager = InterstitialAdManager.getInstance();
-                interstitialAdManager.setInterstitialAd(interstitialAd);
+                        interstitialAd = loadedInterstitialAd;
 
-                Intent interstitialAdActivityIntent = new Intent(getApplicationContext(), InterstitialAdActivity.class);
-                PendingIntent interstitialAdActivityPendingIntent = PendingIntent.getActivity(getApplicationContext(), 500, interstitialAdActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), notificationChannelIdForAdsAndService)
-                        .setSmallIcon(R.drawable.web_hi_res_512)
-                        .setContentTitle("Show your appreciation!")
-                        .setContentText("This is to support the development of the app.")
-                        .setOngoing(true)
-                        .setGroup("adsServiceGroup")
-                        .setContentIntent(interstitialAdActivityPendingIntent)
-                        .setAutoCancel(true);
+                        InterstitialAdManager interstitialAdManager = InterstitialAdManager.getInstance();
+                        interstitialAdManager.setInterstitialAd(interstitialAd);
 
-                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
-                notificationManagerCompat.notify(450, builder.build());
-                stopSelf();
-            }
+                        Intent interstitialAdActivityIntent = new Intent(getApplicationContext(), InterstitialAdActivity.class);
+                        PendingIntent interstitialAdActivityPendingIntent = PendingIntent.getActivity(getApplicationContext(), 500, interstitialAdActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), notificationChannelIdForAdsAndService)
+                                .setSmallIcon(R.drawable.web_hi_res_512)
+                                .setContentTitle("Show your appreciation!")
+                                .setContentText("This is to support the development of the app.")
+                                .setOngoing(true)
+                                .setGroup("adsServiceGroup")
+                                .setContentIntent(interstitialAdActivityPendingIntent)
+                                .setAutoCancel(true);
 
-            @Override
-            public void onAdFailedToLoad(int i) {
-                super.onAdFailedToLoad(i);
-                Log.e(TAG, "onAdFailedToLoad: " + "ad failed to load, code = " + i);
-                stopSelf();
-            }
-        });
+                        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+                        notificationManagerCompat.notify(450, builder.build());
+                        stopSelf();
+                    }
 
-        interstitialAd.loadAd(adRequest);
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        super.onAdFailedToLoad(loadAdError);
+                        Log.e(TAG, "onAdFailedToLoad: " + "ad failed to load, code = " + loadAdError.toString());
+                        stopSelf();
+                    }
+                });
     }
 
     @Override

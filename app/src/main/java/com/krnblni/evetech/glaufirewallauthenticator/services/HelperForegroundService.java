@@ -76,7 +76,7 @@ public class HelperForegroundService extends Service {
 
         createSingletonAdManagerObject();
 
-        PeriodicWorkRequest periodicAdWork = new PeriodicWorkRequest.Builder(AdLoadAndShowWorker.class, 1, TimeUnit.HOURS, 20, TimeUnit.MINUTES).build();
+        PeriodicWorkRequest periodicAdWork = new PeriodicWorkRequest.Builder(AdLoadAndShowWorker.class, 40, TimeUnit.MINUTES, 15, TimeUnit.MINUTES).build();
         WorkManager.getInstance(getApplicationContext()).enqueueUniquePeriodicWork("periodicAdWorkName", ExistingPeriodicWorkPolicy.KEEP, periodicAdWork);
 
         return START_STICKY;

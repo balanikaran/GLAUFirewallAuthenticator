@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.krnblni.evetech.glaufirewallauthenticator.R;
 import com.krnblni.evetech.glaufirewallauthenticator.fragments.AboutFragment;
@@ -73,10 +75,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeMobileAdsLoadAndShow() {
-        Log.e(TAG, "initializeMobileAdsLoadAndShow: " + "the ad was loaded.");
+        Log.e(TAG, "initializeMobileAdsLoadAndShow: " + "initiating banner ad");
         bannerAdView = findViewById(R.id.bannerAdView);
         AdRequest bannerAdRequest = new AdRequest.Builder().build();
         bannerAdView.loadAd(bannerAdRequest);
+
+        bannerAdView.setAdListener(new AdListener(){
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.e(TAG, "onAdLoaded: " + "banner ad loaded" );
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                Log.e(TAG, "onAdFailedToLoad: " + "banner ad failed to load" + loadAdError.toString() );
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+                Log.e(TAG, "onAdOpened: " + "banner ad opened" );
+            }
+
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+                Log.e(TAG, "onAdClicked: " + "banner ad clicked" );
+            }
+
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                Log.e(TAG, "onAdClosed: " + "banner ad closed" );
+            }
+
+            @Override
+            public void onAdImpression() {
+                super.onAdImpression();
+                Log.e(TAG, "onAdImpression: " + "banner ad impression made" );
+            }
+        });
+
         Log.e(TAG, "initializeMobileAdsLoadAndShow: " + "the ad was loaded");
     }
 

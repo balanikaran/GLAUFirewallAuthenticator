@@ -2,7 +2,8 @@ package com.krnblni.evetech.glaufirewallauthenticator.helpers;
 
 import android.util.Log;
 
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+
 
 public class InterstitialAdManager {
 
