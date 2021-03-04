@@ -202,7 +202,7 @@ public class SettingsFragment extends Fragment {
                         if (userName && password) {
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString("username" + finalProfileNumber, alertDialogUserNameEditText.getText().toString().toLowerCase());
-                            editor.putString("password" + finalProfileNumber, alertDialogPasswordEditText.getText().toString().toLowerCase());
+                            editor.putString("password" + finalProfileNumber, alertDialogPasswordEditText.getText().toString());
                             editor.apply();
                             Toast.makeText(context, "Profile Updated", Toast.LENGTH_SHORT).show();
                             setValues();
