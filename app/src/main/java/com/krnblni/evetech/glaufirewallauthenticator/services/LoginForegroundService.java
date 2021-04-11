@@ -79,11 +79,23 @@ public class LoginForegroundService extends Service {
                 String username = sharedPreferences.getString("username1", "null");
                 String password = sharedPreferences.getString("password1", "null");
 
-                view.evaluateJavascript("(function(){ var user = document.getElementById('ft_un'); user.value = '" +
-                        username +
-                        "'; var pwd = document.getElementById('ft_pd'); pwd.value = '" +
-                        password +
-                        "'; var inputs = document.getElementsByTagName('input'); for (var i = inputs.length - 1; i >= 0; i--) { if ( inputs[i].type == 'submit' ) { inputs[i].click(); } } return document.body.innerHTML; })()", null);
+                view.evaluateJavascript("(" +
+                            "function(){ " +
+                                "var user = document.getElementById('ft_un');" +
+                                "user.value = '" + username + "';" +
+                                "var pwd = document.getElementById('ft_pd');" +
+                                "pwd.value = '" + password + "';" +
+                                "var inputSubmit = document.querySelector(\"input[type='submit']\");" +
+                                "if (inputSubmit) {" +
+                                    "inputSubmit.click();" +
+                                "}" +
+                                "var inputButton = document.querySelector(\"button[type='submit']\");" +
+                                "if (inputButton) {" +
+                                    "inputButton.click();" +
+                                "}" +
+                                "return document.body.innerHTML;" +
+                            "}" +
+                        ")()", null);
 
                 view.setWebViewClient(new WebViewClient() {
                     @Override

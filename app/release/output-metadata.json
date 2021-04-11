@@ -10,8 +10,8 @@
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 14,
-      "versionName": "1.4-stable",
+      "versionCode": 15,
+      "versionName": "1.5-stable",
       "outputFile": "app-release.apk"
     }
   ]

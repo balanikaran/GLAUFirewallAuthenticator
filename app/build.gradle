@@ -8,8 +8,8 @@ android {
         applicationId "com.krnblni.evetech.glaufirewallauthenticator"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 14
-        versionName "1.4-stable"
+        versionCode 15
+        versionName "1.5-stable"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -43,15 +43,15 @@ dependencies {
 
 //    implementation 'com.crashlytics.sdk.android:crashlytics:17.2.2'
 
-    implementation 'com.google.firebase:firebase-messaging:21.0.1'
+    implementation 'com.google.firebase:firebase-messaging:21.1.0'
 
-    implementation 'com.google.firebase:firebase-core:18.0.2'
+    implementation 'com.google.firebase:firebase-core:18.0.3'
 
-    implementation 'com.google.firebase:firebase-ads:19.7.0'
+    implementation 'com.google.firebase:firebase-ads:20.0.0'
 
     implementation "androidx.work:work-runtime:2.5.0"
 
-    implementation 'com.google.android.gms:play-services-ads:19.7.0'
+    implementation 'com.google.android.gms:play-services-ads:20.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
